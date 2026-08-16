@@ -1,0 +1,38 @@
+.hero{
+    position: relative;
+    min-height: 87vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-background);
+
+    &-left{
+        // display: flex;
+        // flex-direction: column;
+        // gap: 20px;
+        width: 50%;
+
+        h1{
+            font-size: clamp(60px, 10vw, 130px);
+
+            span{
+                color: var(--color-accent);
+            }
+        }
+
+        .hero-btns{
+            display: flex;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+    }
+
+    &-right{
+        position: relative;
+
+        width: 50%;
+        height: 650px;
+        background-color: transparent;
+    }
+}

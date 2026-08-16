@@ -1,0 +1,79 @@
+// Playfair Display, Allura, and Inter are now loaded via next/font/google
+// (see fonts.js + layout.js) instead of this @import, which is more reliable
+// in Next.js -- next/font self-hosts the font files at build time.
+
+:root {
+  /* Brand */
+--color-primary: #12284B;
+  --color-secondary: #A9CBE0;
+  --color-accent: #C9A24A;
+  --color-accent-light: #D9B45A;
+
+  /* Backgrounds */
+  --color-background: #041c36;
+  // --color-background-dark: #071A2F;
+  --color-background-dark: #00070f;
+  --color-background-light: #F0F5F4;
+
+  /* Text */
+  --color-text: #FFFFFF;
+  --color-text-dark: #050708;
+  --color-text-muted: #A9CBE0;
+
+  /* Utility */
+  --color-white: #FFFFFF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-background-dark);
+  color: var(--color-text);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+}
+
+.script{
+  font-family: var(--font-script);
+  font-size: 22px;
+  letter-spacing: 4px;
+
+}
+
+body,
+p,
+li {
+  font-family: var(--font-body);
+}
+
+p{
+ font-size: 20px;
+}
+
+button,
+nav,
+input {
+  font-family: var(--font-ui);
+}
+
+ul {
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  padding: 10px 150px;
+}
+
