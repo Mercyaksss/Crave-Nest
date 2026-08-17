@@ -4,13 +4,13 @@
 
 :root {
   /* Brand */
---color-primary: #12284B;
+--color-primary: #1e478a;
   --color-secondary: #A9CBE0;
   --color-accent: #C9A24A;
   --color-accent-light: #D9B45A;
 
   /* Backgrounds */
-  --color-background: #041c36;
+  --color-background: #031222;
   // --color-background-dark: #071A2F;
   --color-background-dark: #00070f;
   --color-background-light: #F0F5F4;
@@ -42,9 +42,11 @@ h3 {
 }
 
 .script{
-  font-family: var(--font-script);
-  font-size: 22px;
+  // font-family: var(--font-script);
+  font-family: var(--font-mrs-saint-delafield);
+  font-size: 40px;
   letter-spacing: 4px;
+  font-style: italic;
 
 }
 
@@ -74,6 +76,7 @@ a{
 }
 
 .container {
-  padding: 10px 150px;
+  // padding: 10px 250px;
+  padding: 10px clamp(10px, 10vw, 250px);
 }
 

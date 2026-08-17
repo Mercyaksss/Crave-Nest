@@ -11,7 +11,7 @@ function Navbar() {
   const [isActive, setIsActive] = useState('Home');
 
   return (
-    <header>
+    <header className='container'>
         <nav>
             <Image 
                 src="/images/logo.png" 

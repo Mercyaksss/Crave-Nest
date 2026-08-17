@@ -1,7 +1,10 @@
 header{
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+
     nav{
         height: 100px;
-        padding: 10px 50px;
         display: flex;
         justify-content: space-between;
         align-items: center;

@@ -1,5 +1,34 @@
-import { playfairDisplay, playlistScript, inter } from '../public/fonts/fonts'
+import { Playfair_Display, Inter, Mrs_Saint_Delafield } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.scss'
+
+const playfairDisplay = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-display',
+  fallback: ['serif'],
+  display: 'swap',
+})
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-ui',
+  fallback: ['sans-serif'],
+  display: 'swap',
+})
+
+const playlistScript = localFont({
+  src: '../public/fonts/PlaylistScript.otf',
+  variable: '--font-script',
+  display: 'swap',
+})
+
+const mrsSaintDelafield = Mrs_Saint_Delafield({
+  variable: '--font-mrs-saint-delafield',
+  subsets: ['latin'],
+  weight: '400',
+})
 
 export const metadata = {
   title: "Crave Nest",
@@ -8,7 +37,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${playfairDisplay.variable} ${inter.variable} ${playlistScript.variable}`}>
+    <html lang="en" className={`${playfairDisplay.variable} ${inter.variable} ${playlistScript.variable} ${mrsSaintDelafield.variable}`}>
       <body>{children}</body>
     </html>
   );

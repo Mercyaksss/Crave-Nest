@@ -339,7 +339,7 @@ export const cateringInfo = {
 // Actual product images will be added once the final edited assets
 // are ready.
 
-export const galleryItems = [];
+export const galleryItems = ['sprinklescake', 'parfait1', 'redVelvetCake', 'smallchopsraw', 'yogurtpour' ];
 
 
 // ============================================================
