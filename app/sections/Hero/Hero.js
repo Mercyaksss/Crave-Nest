@@ -8,7 +8,6 @@ import { GiDeliveryDrone } from "react-icons/gi";
 import { GoHeart } from "react-icons/go";
 import './Hero.scss'
 import TornEdge from '@/app/components/TornEdge/TornEdge';
-import TornEdgeTop from '@/app/components/TornEdge/TornEdgeTop';
 import Herobuttom from '@/app/components/Herobuttom/Herobuttom';
 
 
@@ -73,9 +72,8 @@ function Hero() {
                 alt='Hero Image'
             />
         </div>
-        <TornEdgeTop color='var(--color-white)'/>
 
-        <TornEdge color="var(--color-secondary)" />
+        <TornEdge color="var(--color-white)" />
     </section>
   )
 }

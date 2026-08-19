@@ -1,73 +1,315 @@
 .about{
     position: relative;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 60px;
+    margin-top: 15px;
+    padding-top: 120px;
+    padding-bottom: 120px;
     background-color: var(--color-secondary);
     z-index: 8;
 
     &-left{
         position: relative;
-        width: 45%;
+        width: 42%;
+        flex-shrink: 0;
         display: flex;
 
         &-image{
             position: relative;
-            width: 80%;
-            height: 500px;
+            width: 78%;
+            height: 480px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(3, 16, 31, 0.15);
 
             img{
-                border-radius: 20px;
+                border-radius: 24px;
+                object-fit: cover;
             }
 
         }
 
         .about-text{
             position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
             background-color: var(--color-background);
             z-index: 9;
-            width: 35%;
-            height: 60%;
+            width: 42%;
+            height: 62%;
             border-radius: 20px;
-            top: 20%;
-            left: 65%;
-            padding: 10px;
+            top: 18%;
+            left: 62%;
+            padding: 24px 20px;
+            box-shadow: 0 20px 40px rgba(3, 16, 31, 0.25);
 
-            // h2{
-            //     // margin: 20px 0 0 0;
-            // }
+            .script{
+                color: var(--color-text);
+                font-size: 22px;
+                opacity: 0.85;
+            }
 
             p{
-                font-size: clamp(30px, 3vw, 50px);
-                margin: 10px 0 20px 0;
+                position: relative;
+                font-family: var(--font-display);
+                font-size: clamp(24px, 2.2vw, 32px);
+                font-weight: 600;
+                line-height: 1.25;
+                margin: 0;
+                color: var(--color-text);
+
+                .heart-doodle{
+                    margin-top: 10px;
+                    transform: rotate(-8deg);
+                }
             }
         }
     }
 
     &-right{
         position: relative;
-        width: 45%;
-        color: var(--color-background);
+        width: 50%;
+        color: var(--color-text-dark);
         display: flex;
         flex-direction: column;
-        gap: 40px;
+        gap: 22px;
 
-        span{
+        > .script{
             color: var(--color-primary);
-            font-size: 40px;
-
+            font-size: 26px;
         }
 
-
         h2{
-            font-size: 70px;
-
+            font-size: clamp(36px, 3.6vw, 52px);
+            line-height: 1.2;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 20px;
 
             span{
                 color: var(--color-primary);
             }
+
+            &::after{
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 60px;
+                height: 3px;
+                background-color: var(--color-accent);
+            }
         }
 
+        p{
+            font-size: 17px;
+            line-height: 1.7;
+            max-width: 460px;
+            opacity: 0.8;
+        }
+
+        .about-stats{
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 28px;
+            margin-top: 10px;
+            position: relative;
+            z-index: 1;
+
+            .stat{
+                display: flex;
+                align-items: center;
+                gap: 12px;
+
+                svg{
+                    color: var(--color-primary);
+                    flex-shrink: 0;
+                }
+
+                h3{
+                    font-size: 20px;
+                    font-weight: 700;
+                    line-height: 1.2;
+                }
+
+                span{
+                    font-size: 13px;
+                    opacity: 0.7;
+                }
+
+                &:not(:last-child){
+                    padding-right: 28px;
+                    border-right: 1px solid rgba(3, 16, 31, 0.15);
+                }
+            }
+        }
+
+        .about-doodle{
+            position: absolute;
+            top: -30px;
+            right: -10px;
+            width: 140px;
+            height: 140px;
+            color: var(--color-primary);
+            opacity: 0.18;
+            pointer-events: none;
+            z-index: 0;
+        }
+    }
+}
+
+// Tablets / small laptops
+@media(max-width: 1100px){
+    .about{
+        gap: 40px;
+
+        &-left{
+            width: 45%;
+
+            &-image{
+                height: 420px;
+            }
+        }
+
+        &-right{
+            width: 50%;
+
+            .about-doodle{
+                width: 100px;
+                height: 100px;
+            }
+        }
+    }
+}
+
+// Tablets in portrait
+@media(max-width: 900px){
+    .about{
+        flex-direction: column;
+        min-height: auto;
+        padding-top: 100px;
+        padding-bottom: 80px;
+        text-align: center;
+
+        &-left{
+            width: 100%;
+            max-width: 480px;
+            justify-content: center;
+            margin: 0 auto 60px;
+
+            &-image{
+                width: 85%;
+                height: 420px;
+                margin: 0 auto;
+            }
+
+            .about-text{
+                width: 48%;
+                left: auto;
+                right: -6%;
+            }
+        }
+
+        &-right{
+            width: 100%;
+            align-items: center;
+
+            > .script{
+                text-align: center;
+            }
+
+            h2{
+                &::after{
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+
+            p{
+                max-width: 550px;
+            }
+
+            .about-stats{
+                justify-content: center;
+            }
+
+            .about-doodle{
+                display: none;
+            }
+        }
+    }
+}
+
+// Phones
+@media(max-width: 560px){
+    .about{
+        padding-top: 80px;
+        padding-bottom: 60px;
+        gap: 50px;
+
+        &-left{
+            &-image{
+                width: 90%;
+                height: 320px;
+            }
+
+            .about-text{
+                width: 58%;
+                height: 55%;
+                top: 20%;
+                right: -8%;
+                padding: 16px 14px;
+
+                .script{
+                    font-size: 16px;
+                }
+
+                p{
+                    font-size: 18px;
+                }
+            }
+        }
+
+        &-right{
+            gap: 16px;
+
+            > .script{
+                font-size: 20px;
+            }
+
+            h2{
+                font-size: clamp(28px, 8vw, 36px);
+                padding-bottom: 16px;
+            }
+
+            p{
+                font-size: 15px;
+            }
+
+            .about-stats{
+                flex-direction: column;
+                align-items: center;
+                gap: 18px;
+
+                .stat{
+                    justify-content: center;
+
+                    &:not(:last-child){
+                        padding-right: 0;
+                        padding-bottom: 18px;
+                        border-right: none;
+                        border-bottom: 1px solid rgba(3, 16, 31, 0.15);
+                        width: 100%;
+                        max-width: 220px;
+                    }
+                }
+            }
+        }
     }
 }

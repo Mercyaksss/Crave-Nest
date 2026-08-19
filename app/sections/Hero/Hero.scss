@@ -112,6 +112,14 @@
             width: 100%;
             order: 1;
 
+            h1{
+                margin-bottom: 30px;
+            }
+
+            p{
+                margin: 0 auto;
+            }
+
             .hero-btns{
                 justify-content: center;
             }
@@ -143,7 +151,6 @@
 
             h1{
                 font-size: clamp(40px, 14vw, 60px);
-                margin-bottom: 10px;
             }
 
             p{
