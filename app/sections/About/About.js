@@ -56,10 +56,10 @@ function About() {
                 </div>
             </div>
 
-            <GiWhisk className='about-doodle' />
+            <GiWhisk className='about-doodle' strokeWidth={0.2}/>
         </div>
         <TornEdgeTop color='var(--color-secondary)'/>
-        {/* <TornEdgeTop color='red'/> */}
+        <TornEdge color='var(--color-secondary)'/>
 
     </section>
   )

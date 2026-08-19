@@ -339,7 +339,36 @@ export const cateringInfo = {
 // Actual product images will be added once the final edited assets
 // are ready.
 
-export const galleryItems = ['sprinklescake', 'parfait1', 'redVelvetCake', 'smallchopsraw', 'yogurtpour' ];
+export const galleryItems = [
+    {
+        name: 'parfait1',
+        className: 'one'
+    },
+    {
+        name: 'yogurtpour',
+        className: 'two'
+    },
+    {
+        name: 'sprinklescake',
+        className: 'three'
+    },
+    {
+        name: 'gradcake',
+        className: 'four'
+    },
+    {
+        name: 'redVelvetCake',
+        className: 'five'
+    },
+    {
+        name: 'cupcakes',
+        className: 'six'
+    },
+    {
+        name: 'smallchopsraw',
+        className: 'seven'
+    }
+];
 
 
 // ============================================================

@@ -7,14 +7,13 @@ import Button from '../Button/Button'
 import { FaWhatsapp } from "react-icons/fa6";
 import { GiHamburger } from "react-icons/gi";
 import TornEdge from '../TornEdge/TornEdge';
-import TornEdgeTop from '../TornEdge/TornEdgeTop';
 
 function Navbar() {
   const [isActive, setIsActive] = useState('Home');
 
   return (
-    <header className='container'>
-        <nav>
+    <header >
+        <nav className='container'>
             <Image 
                 src="/images/logo.png" 
                 width={60} 
@@ -50,9 +49,8 @@ function Navbar() {
                 size={25}
                 className='hamburger-icon'
             />
-            {/* <TornEdgeTop color='var(--color-white)'/> */}
         </nav>
-        {/* <TornEdge color='var(--color-background)'/> */}
+        <TornEdge color='var(--color-background-dark)'/>
     </header>
   )
 }
