@@ -57,7 +57,7 @@
 
         p{
             font-size: clamp(16px, 2vw, 20px);
-            max-width: 550px;
+            // max-width: 550px;
         }
 
         .hero-btns{
@@ -70,7 +70,7 @@
         .hero-features{
             display: flex;
             flex-wrap: wrap;
-            gap: 20px 30px;
+            gap: 20px 20px;
             margin-top: 40px;
         }
     }
@@ -86,19 +86,7 @@
 }
 
 // Tablets / small laptops
-@media(max-width: 1024px){
-    .hero{
-        padding-top: 80px;
-        padding-bottom: 60px;
-
-        &-right{
-            height: 500px;
-        }
-    }
-}
-
-// Tablets in portrait / large phones
-@media(max-width: 900px){
+@media(max-width: 1270px){
     .hero{
         flex-direction: column;
         justify-content: center;
@@ -110,11 +98,32 @@
 
         &-left{
             width: 100%;
-            order: 1;
-
+            
             h1{
                 margin-bottom: 30px;
             }
+
+            .hero-btns,
+            .hero-features{
+                justify-content: center;
+            }
+        }
+
+        &-right{
+            height: 500px;
+            width: 80%;
+        }
+    }
+
+}
+
+
+// Tablets in portrait / large phones
+@media(max-width: 900px){
+    .hero{
+        &-left{
+            width: 100%;
+            order: 1;
 
             p{
                 margin: 0 auto;
@@ -131,7 +140,7 @@
 
         &-right{
             order: 2;
-            width: 100%;
+            // width: 100%;
             height: 380px;
             max-height: none;
         }
