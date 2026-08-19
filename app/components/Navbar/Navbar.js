@@ -6,6 +6,8 @@ import './Navbar.scss'
 import Button from '../Button/Button'
 import { FaWhatsapp } from "react-icons/fa6";
 import { GiHamburger } from "react-icons/gi";
+import TornEdge from '../TornEdge/TornEdge';
+import TornEdgeTop from '../TornEdge/TornEdgeTop';
 
 function Navbar() {
   const [isActive, setIsActive] = useState('Home');
@@ -34,17 +36,23 @@ function Navbar() {
                 ))}
             </ul>
 
-            <Button
-                title='Order on WhatsApp'
-                icon={<FaWhatsapp color='#C9A24A' size={25}/>}
-                color='#C9A24A'
-            />
+            <div className='nav-cta-btn'>
+                <Button
+                    title='Order on WhatsApp'
+                    icon={<FaWhatsapp color='#C9A24A' size={25}/>}
+                    color='#C9A24A'
+                />
+                
+            </div>
+            
 
             <GiHamburger 
                 size={25}
                 className='hamburger-icon'
             />
+            {/* <TornEdgeTop color='var(--color-white)'/> */}
         </nav>
+        {/* <TornEdge color='var(--color-background)'/> */}
     </header>
   )
 }

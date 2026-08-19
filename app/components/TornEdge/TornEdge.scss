@@ -1,0 +1,15 @@
+.torn-edge {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.torn-edge svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

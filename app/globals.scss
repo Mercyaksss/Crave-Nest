@@ -1,16 +1,13 @@
-// Playfair Display, Allura, and Inter are now loaded via next/font/google
-// (see fonts.js + layout.js) instead of this @import, which is more reliable
-// in Next.js -- next/font self-hosts the font files at build time.
 
 :root {
   /* Brand */
---color-primary: #1e478a;
+  --color-primary: #1e478a;
   --color-secondary: #A9CBE0;
   --color-accent: #C9A24A;
   --color-accent-light: #D9B45A;
 
   /* Backgrounds */
-  --color-background: #031222;
+  --color-background: #03101f;
   // --color-background-dark: #071A2F;
   --color-background-dark: #00070f;
   --color-background-light: #F0F5F4;
@@ -31,7 +28,7 @@
 }
 
 body {
-  background-color: var(--color-background-dark);
+  background-color: var(--color-white);
   color: var(--color-text);
 }
 
@@ -42,11 +39,9 @@ h3 {
 }
 
 .script{
-  // font-family: var(--font-script);
   font-family: var(--font-mrs-saint-delafield);
   font-size: 40px;
   letter-spacing: 4px;
-  font-style: italic;
 
 }
 
@@ -76,7 +71,9 @@ a{
 }
 
 .container {
-  // padding: 10px 250px;
-  padding: 10px clamp(10px, 10vw, 250px);
+  padding: 10px clamp(10px, 8vw, 200px);
 }
 
+.torn-edge-inner{
+  height: 90%
+}

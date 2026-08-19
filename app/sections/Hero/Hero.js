@@ -7,13 +7,14 @@ import { GiLindenLeaf } from "react-icons/gi";
 import { GiDeliveryDrone } from "react-icons/gi";
 import { GoHeart } from "react-icons/go";
 import './Hero.scss'
+import TornEdge from '@/app/components/TornEdge/TornEdge';
+import TornEdgeTop from '@/app/components/TornEdge/TornEdgeTop';
 import Herobuttom from '@/app/components/Herobuttom/Herobuttom';
 
 
 function Hero() {
   return (
     <section id='home' className='hero container'>
-
         <div className='hero-left'>
             <span className='script'>
                 A little taste <br/>of Euphoria
@@ -40,7 +41,7 @@ function Hero() {
 
             </div>
             
-            <div>
+            <div className='hero-features'>
                 <Herobuttom
                     icon={<GiLindenLeaf color='#C9A24A' size={40}/>}
                     word1='Quality'
@@ -72,6 +73,9 @@ function Hero() {
                 alt='Hero Image'
             />
         </div>
+        <TornEdgeTop color='var(--color-white)'/>
+
+        <TornEdge color="var(--color-secondary)" />
     </section>
   )
 }

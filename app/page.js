@@ -1,7 +1,7 @@
 import Hero from "./sections/Hero/Hero";
 import Navbar from './components/Navbar/Navbar';
 import About from "./sections/About/About";
-import Gallery from "./sections/Gallery/Gallery";
+// import Gallery from "./sections/Gallery/Gallery";
 
 export default function Home() {
   return (
@@ -9,7 +9,7 @@ export default function Home() {
       <Navbar/>
       <Hero/>
       <About/>
-      <Gallery/>
+      {/* <Gallery/> */}
     </main>
   );
 }
