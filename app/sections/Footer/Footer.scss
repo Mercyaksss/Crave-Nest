@@ -1,0 +1,257 @@
+.footer{
+    position: relative;
+    background-color: var(--color-background-dark);
+    color: var(--color-white);
+    overflow: hidden;
+
+    &-top{
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 40px;
+        padding-top: 60px;
+        padding-bottom: 50px;
+    }
+
+    &-brand{
+        width: 28%;
+        min-width: 220px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        .footer-logo{
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            h3{
+                color: var(--color-accent);
+                font-size: 20px;
+                line-height: 1.1;
+                margin: 0;
+            }
+
+            span{
+                font-size: 11px;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                opacity: 0.7;
+            }
+        }
+
+        p{
+            font-size: 14px;
+            line-height: 1.7;
+            opacity: 0.75;
+            max-width: 320px;
+        }
+
+        .footer-socials{
+            display: flex;
+            gap: 14px;
+            margin-top: 6px;
+
+            a{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 36px;
+                height: 36px;
+                border: 1px solid var(--color-accent);
+                border-radius: 50%;
+                color: var(--color-accent);
+                font-size: 15px;
+                transition: 0.3s;
+
+                &:hover{
+                    background-color: var(--color-accent);
+                    color: var(--color-background-dark);
+                }
+            }
+        }
+    }
+
+    &-links{
+        min-width: 140px;
+
+        h4{
+            color: var(--color-accent);
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        ul{
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 0;
+            margin: 0;
+
+            a{
+                font-size: 14px;
+                opacity: 0.8;
+                transition: 0.3s;
+
+                &:hover{
+                    opacity: 1;
+                    color: var(--color-accent);
+                }
+            }
+        }
+    }
+
+    &-contact{
+        min-width: 220px;
+
+        h4{
+            color: var(--color-accent);
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        ul{
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            padding: 0;
+            margin: 0;
+
+            li{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 14px;
+                opacity: 0.85;
+
+                svg{
+                    color: var(--color-accent);
+                    flex-shrink: 0;
+                    font-size: 15px;
+                }
+
+                a{
+                    transition: 0.3s;
+
+                    &:hover{
+                        color: var(--color-accent);
+                    }
+                }
+            }
+        }
+    }
+
+    &-doodle{
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 90px;
+        color: var(--color-accent);
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    &-bottom{
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 18px 20px;
+        text-align: center;
+
+        p{
+            font-size: 13px;
+            opacity: 0.6;
+            margin: 0;
+        }
+    }
+}
+
+// Small laptops / tablets: wrap into 2 columns, move doodle out of the way
+@media(max-width: 1024px){
+    .footer{
+        &-top{
+            padding-top: 50px;
+        }
+
+        &-brand{
+            width: 100%;
+        }
+
+        &-doodle{
+            position: static;
+            transform: none;
+            font-size: 70px;
+            opacity: 0.35;
+            margin-left: auto;
+            align-self: center;
+        }
+    }
+}
+
+// Tablets in portrait: centered 2-column link grid
+@media(max-width: 768px){
+    .footer{
+
+        &-top{
+            flex-direction: column;
+            gap: 36px;
+        }
+
+        &-brand{
+            text-align: left;
+
+            p{
+                max-width: 400px;
+            }
+        }
+
+        &-links, &-contact{
+            width: 100%;
+            max-width: 320px;
+
+            ul{
+                align-items: left;
+            }
+
+            li{
+                justify-content: left;
+            }
+        }
+
+        &-doodle{
+            display: none;
+        }
+    }
+}
+
+// Phones
+@media(max-width: 480px){
+    .footer{
+        &-top{
+            padding-top: 40px;
+            padding-bottom: 40px;
+            gap: 30px;
+        }
+
+        &-brand{
+            .footer-logo-mark{
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+        }
+
+        
+        &-bottom{
+            padding: 16px 20px;
+
+            p{
+                font-size: 12px;
+            }
+        }
+    }
+}

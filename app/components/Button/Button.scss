@@ -1,5 +1,5 @@
 .cta-btn{
-    width: fit-content;
+    max-width: fit-content;
     height: 40px;
     padding: 5px 15px;
     border: 2px solid var(--color-accent);
@@ -8,5 +8,4 @@
     display: flex;
     gap: 10px;
     align-items: center;
-
 }
