@@ -1,0 +1,163 @@
+.faq{
+    position: relative;
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: var(--color-background-dark);
+    color: var(--color-white);
+
+    > .script{
+        color: var(--color-accent);
+        font-size: 24px;
+    }
+
+    > h2{
+        font-size: clamp(32px, 4vw, 48px);
+        line-height: 1.25;
+        font-weight: 600;
+        margin-top: 10px;
+        margin-bottom: 50px;
+
+        span{
+            color: var(--color-primary);
+        }
+    }
+
+    &-list{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        max-width: 760px;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    &-item{
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 14px;
+        background-color: rgba(255, 255, 255, 0.03);
+        overflow: hidden;
+        transition: border-color 0.3s ease, background-color 0.3s ease;
+
+        .faq-answer{
+            display: none;
+            transition:  display 0.5s ease;
+        }
+
+        &.open{
+            border-color: var(--color-accent);
+            background-color: rgba(201, 162, 74, 0.06);
+
+            .faq-answer{
+                display: block;
+                grid-template-rows: 1fr;
+                padding-top: 0;
+            }
+
+            .faq-question svg{
+                color: var(--color-accent);
+            }
+        }
+    }
+
+    &-question{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 22px 24px;
+        font-family: inherit;
+        text-align: left;
+
+        span{
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--color-white);
+        }
+
+        svg{
+            flex-shrink: 0;
+            font-size: 14px;
+            color: var(--color-accent);
+            transition: color 0.3s ease;
+        }
+    }
+
+    &-answer{
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.35s ease;
+
+        p{
+            overflow: hidden;
+            font-size: 15px;
+            line-height: 1.7;
+            opacity: 0.75;
+            padding: 0 24px 22px;
+            margin: 0;
+        }
+
+        // grid-template-rows trick needs the child wrapped so it can collapse to 0
+        > *{
+            min-height: 0;
+        }
+    }
+}
+
+// Tablets
+@media(max-width: 768px){
+    .faq{
+        padding-top: 70px;
+        padding-bottom: 70px;
+
+        &-list{
+            max-width: 100%;
+        }
+
+        &-question{
+            padding: 18px 18px;
+
+            span{
+                font-size: 15px;
+            }
+        }
+
+        &-answer p{
+            padding: 0 18px 18px;
+            font-size: 14px;
+        }
+    }
+}
+
+// Phones
+@media(max-width: 480px){
+    .faq{
+        padding-top: 60px;
+        padding-bottom: 60px;
+
+        > .script{
+            font-size: 20px;
+        }
+
+        > h2{
+            margin-bottom: 36px;
+        }
+
+        &-list{
+            gap: 12px;
+        }
+
+        &-question{
+            padding: 16px;
+            gap: 12px;
+
+            span{
+                font-size: 14px;
+            }
+        }
+    }
+}
