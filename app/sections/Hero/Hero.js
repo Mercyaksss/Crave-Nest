@@ -6,6 +6,7 @@ import { FaWhatsapp } from "react-icons/fa6";
 import { GiLindenLeaf } from "react-icons/gi";
 import { GiDeliveryDrone } from "react-icons/gi";
 import { GoHeart } from "react-icons/go";
+import { IoShieldCheckmarkOutline } from "react-icons/io5";
 import './Hero.scss'
 import TornEdge from '@/app/components/TornEdge/TornEdge';
 import Herobuttom from '@/app/components/Herobuttom/Herobuttom';
@@ -49,7 +50,7 @@ function Hero() {
                         word2='Ingredients'
                     />
                     <Herobuttom
-                        icon={<GiLindenLeaf color='#C9A24A' size={40}/>}
+                        icon={<IoShieldCheckmarkOutline color='#C9A24A' size={40}/>}
                         word1='Hygienic'
                         word2='Preparation'
                     />
@@ -75,12 +76,10 @@ function Hero() {
                 />
             </div>
 
-            <TornEdgeTop color='var(--color-background)'/>
 
-            <TornEdge color="var(--color-background)" />
-
-
+        <TornEdge color='var(--color-background'/>
         </div>
+        
 
     </section>
   )
