@@ -5,9 +5,9 @@ import { navLinks } from '../../constants'
 import './Navbar.scss'
 import Button from '../Button/Button'
 import { FaWhatsapp } from "react-icons/fa6";
-import { GiHamburger } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
 import TornEdge from '../TornEdge/TornEdge';
+import { GiCupcake } from "react-icons/gi";
 
 function Navbar() {
   const [isActive, setIsActive] = useState('Home');
@@ -67,7 +67,7 @@ function Navbar() {
             onClick={toggleMenu}
           />
         ) : (
-          <GiHamburger
+          <GiCupcake
             size={25}
             className='hamburger-icon'
             onClick={toggleMenu}

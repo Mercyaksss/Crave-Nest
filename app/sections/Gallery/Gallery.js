@@ -21,7 +21,7 @@ function Gallery() {
                 </div>
             ))}
         </div>
-        <TornEdge color='var(--color-background-dark)'/>
+        <TornEdge color='var(--color-primary)'/>
     </section>
   )
 }

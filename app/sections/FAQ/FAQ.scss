@@ -5,6 +5,7 @@
     padding-bottom: 100px;
     background-color: var(--color-background-dark);
     color: var(--color-white);
+    z-index: 5;
 
     > .script{
         color: var(--color-accent);

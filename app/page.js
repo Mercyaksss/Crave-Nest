@@ -5,6 +5,7 @@ import Gallery from "./sections/Gallery/Gallery";
 import Footer from "./sections/Footer/Footer";
 import EventCTA from "./sections/EventCTA/EventCTA";
 import FAQ from "./sections/FAQ/FAQ";
+import Menu from "./sections/Menu/Menu";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Navbar/>
       <Hero/>
       <About/>
+      <Menu/>
       <Gallery/>
       <FAQ/>
       <EventCTA/>

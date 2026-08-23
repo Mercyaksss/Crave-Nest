@@ -3,7 +3,9 @@
     text-align: center;
     padding-top: 80px;
     padding-bottom: 40px;
-    background-color: var(--color-background-dark);
+    background-color: var(--color-primary);
+    // margin-top: 100px;
+    z-index: 6;
 
     h2{
         margin-top: 20px;

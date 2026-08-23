@@ -1,0 +1,102 @@
+.menu-section {
+  background-color: var(--color-background-dark);
+  padding-top: 80px;
+  padding-bottom: 80px;
+  position: relative;
+  z-index: 7;
+
+  .menu-heading {
+    text-align: center;
+    color: var(--color-white);
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 600;
+    margin-bottom: 48px;
+
+    .accent {
+      color: var(--color-text-dark);
+    }
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .menu-card {
+    background-color: var(--color-secondary);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menu-card-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+
+    img{
+        border-radius: 0 0 20px 20px ;
+
+    }
+
+  }
+
+  .menu-card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-text-dark);
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--color-text-dark);
+      margin-bottom: 8px;
+    }
+  }
+
+  .menu-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+    width: fit-content;
+
+    transition: gap 0.2s ease;
+
+    &:hover {
+      gap: 12px; // arrow nudges right on hover
+    }
+  }
+
+  // ----------------------------
+  // Responsive
+  // ----------------------------
+
+  @media (max-width: 1100px) {
+    .menu-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 500px) {
+    .menu-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .menu-heading {
+      margin-bottom: 32px;
+    }
+  }
+}

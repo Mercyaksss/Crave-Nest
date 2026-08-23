@@ -367,7 +367,15 @@ export const galleryItems = [
     {
         name: 'smallchopsraw',
         className: 'seven'
-    }
+    },
+    {
+        name: 'hbd',
+        className: 'eight'
+    },
+    // {
+    //     name: 'vanilla',
+    //     className: 'nine'
+    // }
 ];
 
 
