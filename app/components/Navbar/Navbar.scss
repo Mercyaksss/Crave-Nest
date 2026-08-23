@@ -55,6 +55,14 @@ header{
 
         .hamburger-icon{
             display: none;
+            cursor: pointer;
+        }
+
+        // Mobile dropdown menu panel.
+        // Hidden by default on all screen sizes (only shown + toggled at the
+        // 950px breakpoint below). Positioned to hang below the header.
+        .mobile-menu {
+            display: none;
         }
     }
 }
@@ -63,16 +71,71 @@ header{
     header{
         nav{ 
 
-            ul{
+            // Hide the desktop inline nav links...
+            .nav-links{
                 display: none;
             }
 
+            // ...and swap in the hamburger/close icon instead
             .hamburger-icon{
                 display: block;
             }
 
             .nav-cta-btn{
                 display: none;
+            }
+
+            // The dropdown panel itself: full-width, sits right under the
+            // header, closed (collapsed + invisible) by default.
+            .mobile-menu {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 24px;
+
+                position: absolute;
+                top: 80px; // sits directly below the 80px-tall header
+                left: 0;
+                width: 100%;
+
+                background-color: var(--color-background-dark);
+                padding: 32px 24px;
+
+                // Closed state: collapsed to 0 height, content invisible,
+                // and not clickable (pointer-events: none) so it can't be
+                // interacted with while hidden.
+                max-height: 0;
+                opacity: 0;
+                overflow: hidden;
+                pointer-events: none;
+                transition: max-height 0.35s ease, opacity 0.25s ease;
+
+                // Open state: toggled on via the `open` class in Navbar.js.
+                // Expands to fit content and fades in.
+                &.open {
+                    max-height: 500px; // large enough to fit all links + button
+                    opacity: 1;
+                    pointer-events: auto;
+                }
+
+                ul {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 20px;
+                    list-style: none;
+                    width: 100%;
+
+                    li a {
+                        text-decoration: none;
+                        color: #fff;
+                        font-size: 18px;
+
+                        &.active {
+                            color: #C9A24A;
+                        }
+                    }
+                }
             }
         }
     }

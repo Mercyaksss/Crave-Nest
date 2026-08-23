@@ -3,6 +3,7 @@ import Navbar from './components/Navbar/Navbar';
 import About from "./sections/About/About";
 import Gallery from "./sections/Gallery/Gallery";
 import Footer from "./sections/Footer/Footer";
+import EventCTA from "./sections/EventCTA/EventCTA";
 import FAQ from "./sections/FAQ/FAQ";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <About/>
       <Gallery/>
       <FAQ/>
+      <EventCTA/>
       <Footer/>
     </main>
   );

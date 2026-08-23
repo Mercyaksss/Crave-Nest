@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { faqItems } from '@/app/constants'
 import './FAQ.scss'
 import { FaPlus, FaMinus } from 'react-icons/fa6'
+import TornEdge from '@/app/components/TornEdge/TornEdge'
 
 function FAQ() {
     const [activeIndex, setActiveIndex] = useState(0)
@@ -38,6 +39,9 @@ function FAQ() {
                     )
                 })}
             </div>
+
+            <TornEdge color='var(--color-background-dark)'/>
+            
         </section>
     )
 }
