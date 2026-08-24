@@ -1,39 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaArrowRightLong } from "react-icons/fa6";
+import { menuItems } from '../../constants'
 import './Menu.scss'
+import TornEdgeTop from '@/app/components/TornEdge/TornEdgeTop';
 import TornEdge from '@/app/components/TornEdge/TornEdge';
 
-// Dummy menu category data. Swap image paths / text for the real content later.
-const menuItems = [
-  {
-    id: 'cakes',
-    title: 'Cakes',
-    description: 'Moist, rich, and beautifully decorated for every celebration.',
-    image: '/images/meatpieImage.png',
-  },
-  {
-    id: 'small-chops',
-    title: 'Meatier Small Chops',
-    description: 'Perfectly seasoned bites packed with flavor.',
-    image: '/images/springrolls.png',
-  },
-  {
-    id: 'doughnuts',
-    title: 'Doughnuts',
-    description: 'Soft, fluffy, and irresistibly delicious.',
-    image: '/images/menu-doughnuts.png',
-  },
-  {
-    id: 'pastries',
-    title: 'Sotherton Pastries',
-    description: 'Classic treats with a rich, melty touch of sweetness.',
-    image: '/images/menu-pastries.png',
-  },
-];
-
-// WhatsApp business number the "Request a quote" links should message.
-// Update this to the real number/format used elsewhere in the site.
+// WhatsApp business number the "Request a quote" links message.
+// Update to match the real number used elsewhere on the site.
 const WHATSAPP_NUMBER = '2349012345678';
 
 function Menu() {
@@ -44,44 +18,54 @@ function Menu() {
           Made to satisfy every <span className='accent'>craving.</span>
         </h2>
 
-        <div className='menu-grid'>
-          {menuItems.map((item) => {
-            // Pre-fills the WhatsApp message with the item name so the
-            // request already has context when it lands in the chat.
+        <div className='menu-list'>
+          {menuItems.map((item, index) => {
+            // Each item's own prefilled message (from constants) is
+            // URL-encoded and appended to its WhatsApp link.
             const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-              `Hi Crave Nest, I'd like a quote for ${item.title}.`
+              item.whatsappMessage
             )}`;
 
+            // Alternates the image/banner side every other item (zigzag
+            // layout), matching the reference design.
+            const isReversed = index % 2 !== 0;
+
             return (
-              <div className='menu-card' key={item.id}>
-                <div className='menu-card-image'>
+              <div
+                className={`menu-item ${isReversed ? 'menu-item--reverse' : ''}`}
+                key={item.id}
+              >
+                <div className='menu-item-image'>
                   <Image
-                    src={item.image}
-                    alt={item.title}
+                    src={`/images/${item.image}.png`}
+                    alt={item.name}
                     fill
-                    sizes="(max-width: 700px) 90vw, (max-width: 1100px) 45vw, 23vw"
+                    sizes="(max-width: 700px) 60vw, 320px"
                   />
                 </div>
 
-                <div className='menu-card-body'>
-                  <h3>{item.title}</h3>
+                <div className='menu-item-banner'>
+                  <TornEdgeTop color='var(--color-secondary)'/>
+
+                  <h3 className='script'>{item.name}</h3>
                   <p>{item.description}</p>
 
                   <Link
                     href={whatsappHref}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className='menu-card-link'
+                    className='menu-item-cta'
                   >
                     Request a quote <FaArrowRightLong size={14} />
                   </Link>
+
+                  <TornEdge color='var(--color-secondary)'/>
                 </div>
               </div>
             );
           })}
         </div>
       </div>
-      <TornEdge color='var(--color-background-dark)'/>
     </section>
   )
 }

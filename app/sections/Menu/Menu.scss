@@ -1,82 +1,103 @@
 .menu-section {
-  background-color: var(--color-background-dark);
+  background-color: var(--color-background);
   padding-top: 80px;
   padding-bottom: 80px;
-  position: relative;
-  z-index: 7;
+  overflow: hidden; // keeps the overlapping banners from causing horizontal scroll
 
   .menu-heading {
     text-align: center;
-    color: var(--color-white);
+    // color: var(--color-text-dark);
     font-size: clamp(28px, 4vw, 40px);
     font-weight: 600;
-    margin-bottom: 48px;
+    margin-bottom: 56px;
 
     .accent {
-      color: var(--color-text-dark);
+      color: var(--color-primary);
     }
   }
 
-  .menu-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-  }
-
-  .menu-card {
-    background-color: var(--color-secondary);
-    border-radius: 12px;
-    overflow: hidden;
+  .menu-list {
     display: flex;
     flex-direction: column;
+    gap: 48px;
   }
 
-  .menu-card-image {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 4 / 3;
-
-    img{
-        border-radius: 0 0 20px 20px ;
-
-    }
-
-  }
-
-  .menu-card-body {
-    padding: 20px;
+  // Each row: circular image + overlapping dark banner, side by side.
+  .menu-item {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
-
-    h3 {
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--color-text-dark);
-    }
-
-    p {
-      font-size: 14px;
-      line-height: 1.5;
-      color: var(--color-text-dark);
-      margin-bottom: 8px;
-    }
-  }
-
-  .menu-card-link {
-    display: inline-flex;
     align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--color-primary);
-    text-decoration: none;
-    width: fit-content;
+    justify-content: center;
 
-    transition: gap 0.2s ease;
+    .menu-item-image {
+      position: relative;
+      width: 280px;
+      height: 280px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      overflow: hidden;
+      z-index: 2; // image sits above the banner
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+    }
 
-    &:hover {
-      gap: 12px; // arrow nudges right on hover
+    .menu-item-banner {
+      position: relative;
+      z-index: 1; // tucks slightly under the image edge
+      background-color: var(--color-secondary);
+      color: var(--color-white);
+      max-width: 480px;
+      padding: 36px 48px;
+      margin-left: -70px; // pulls banner left edge under the image
+      border-radius: 4px;
+
+      h3 {
+        font-size: 32px;
+        color: var(--color-accent);
+        margin-bottom: 12px;
+        margin-left: 30px;
+      }
+
+      p {
+        font-size: 15px;
+        line-height: 1.6;
+        color: var(--color-text-dark);
+        margin-bottom: 20px;
+        margin-left: 30px;
+
+      }
+    }
+
+    .menu-item-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-accent);
+      text-decoration: none;
+      transition: gap 0.2s ease;
+      margin-left: 30px;
+
+
+      &:hover {
+        gap: 12px; // arrow nudges right on hover
+      }
+    }
+
+    // Alternate rows: image on the right, banner on the left,
+    // overlap flips to the banner's right edge.
+    &.menu-item--reverse {
+      flex-direction: row-reverse;
+      
+
+      .menu-item-banner {
+        margin-left: 0;
+        margin-right: -70px;
+
+        p{
+        margin-right: 30px;
+
+        }
+      }
     }
   }
 
@@ -84,19 +105,42 @@
   // Responsive
   // ----------------------------
 
-  @media (max-width: 1100px) {
-    .menu-grid {
-      grid-template-columns: repeat(2, 1fr);
+  // Below this, drop the side-by-side overlap and stack image over banner.
+  @media (max-width: 700px) {
+    .menu-item,
+    .menu-item.menu-item--reverse {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .menu-item .menu-item-image {
+      width: 220px;
+      height: 220px;
+      margin-bottom: -40px; // small vertical overlap instead of horizontal
+    }
+
+    .menu-item .menu-item-banner,
+    .menu-item.menu-item--reverse .menu-item-banner {
+      margin: 0;
+      width: 100%;
+      max-width: 100%;
+      padding: 56px 24px 28px; // extra top padding clears the overlapping image
+      text-align: center;
+    }
+
+    .menu-item-cta {
+      justify-content: center;
     }
   }
 
-  @media (max-width: 500px) {
-    .menu-grid {
-      grid-template-columns: 1fr;
+  @media (max-width: 400px) {
+    .menu-item .menu-item-image {
+      width: 180px;
+      height: 180px;
     }
 
-    .menu-heading {
-      margin-bottom: 32px;
+    .menu-item-banner h3 {
+      font-size: 26px;
     }
   }
 }

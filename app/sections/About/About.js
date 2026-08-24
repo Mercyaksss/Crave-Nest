@@ -58,7 +58,7 @@ function About() {
 
             <GiWhisk className='about-doodle' strokeWidth={0.2}/>
         </div>
-        {/* <TornEdgeTop color='var(--color-secondary)'/> */}
+        <TornEdgeTop color='var(--color-secondary)'/>
         <TornEdge color='var(--color-secondary)'/>
         {/* <TornEdge color='red'/> */}
 

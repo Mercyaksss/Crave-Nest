@@ -1,7 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
 import { FaInstagram, FaTiktok, FaWhatsapp, FaPhone, FaEnvelope, FaLocationDot, FaClock } from "react-icons/fa6"
-import { PiChefHatLight } from "react-icons/pi"
 import { brand, navLinks, productCategories, contactInfo, socialLinks, businessInfo, businessHours } from '@/app/constants'
 import './Footer.scss'
 import Image from 'next/image'

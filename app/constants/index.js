@@ -1,37 +1,9 @@
-// data/index.js
-
-// ============================================================
-// BRAND
-// ============================================================
-
 export const brand = {
     name: "Crave Nest",
 
     description:
-        "A baking and food business creating baked goods, pastries, and catering experiences designed around comfort, quality, and enjoyment.",
-
-    tagline: "", // To be decided with the owner
-
-    colors: {
-        navy: "#12284B",
-        lightBlue: "#A9CBE0",
-        neutral: "#F0F5F4",
-        black: "#000000",
-        gold: "#C9A24A",
-    },
-
-    fonts: {
-        display: "Playfair Display",
-        body: "Times New Roman",
-        ui: "Inter",
-        accent: "Allura",
-    },
+        "A baking and food business creating baked goods, pastries, and catering experiences designed around comfort, quality, and enjoyment."
 };
-
-
-// ============================================================
-// NAVIGATION
-// ============================================================
 
 export const navLinks = [
     {
@@ -56,10 +28,125 @@ export const navLinks = [
     },
 ];
 
+export const features = [
+  {
+    label: 'Quality\nIngredients',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 21c8 0 14-6 14-14V4h-3C8 4 5 10 5 18v3Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+        <path d="M5 21c3-6 6-9 12-13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
+    ),
+  },
+  {
+    label: 'Hygienic\nPreparation',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2 4 5v6c0 5 3.4 9 8 11 4.6-2 8-6 8-11V5l-8-3Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+        <path d="m9 12 2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    label: 'Timely\nDelivery',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 7h13v9H2z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+        <path d="M15 10h3.5L21 13v3h-6z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+        <circle cx="6.5" cy="18" r="1.8" stroke="currentColor" strokeWidth="1.5" />
+        <circle cx="17.5" cy="18" r="1.8" stroke="currentColor" strokeWidth="1.5" />
+      </svg>
+    ),
+  },
+  {
+    label: 'Made\nwith Love',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M12 20s-7.5-4.6-10-9.3C.4 7.4 2 4 5.4 4c2 0 3.4 1.1 4.3 2.4C10.6 5.1 12 4 14 4c3.4 0 5 3.4 3.3 6.7C15 15.4 12 20 12 20Z"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinejoin="round"
+        />
+      </svg>
+    ),
+  },
+]
 
-// ============================================================
-// BUSINESS INFORMATION
-// ============================================================
+export const menuItems = [
+  {
+    id: 1,
+    name: "Custom Cakes",
+    image: 'gradCake',
+    description:
+      "Beautifully crafted cakes designed to make every celebration extra special.",
+    whatsappMessage:
+      "Hi Crave Nest! I'd like to enquire about a custom cake. I'd like to discuss the size, flavour, design and current price."
+  },
+  {
+    id: 2,
+    name: "Cupcakes",
+    image: 'cupcakesImg',
+    description:
+      "Delicious, beautifully decorated cupcakes made for celebrations, events and sweet cravings.",
+    whatsappMessage:
+      "Hi Crave Nest! I'd like to enquire about cupcakes. Please I'd like to know the available flavours, quantities and current price."
+  },
+  {
+    id: 3,
+    name: "Parfaits",
+    image: 'parfaitsImg',
+    description:
+      "Creamy and indulgent parfaits, perfect for celebrations, events or a little treat.",
+    whatsappMessage:
+      "Hi Crave Nest! I'd like to enquire about parfaits. Please I'd like to know the available options, quantities and current price."
+  },
+  {
+    id: 4,
+    name: "Meat Pies",
+    image: 'meatpieImage2',
+    description:
+      "Freshly baked, savoury meat pies made for everyday cravings and special occasions.",
+    whatsappMessage:
+      "Hi Crave Nest! I'd like to enquire about meat pies. Please I'd like to know the available quantities and current price."
+  },
+  {
+    id: 5,
+    name: "Small Chops",
+    image: 'springrolls',
+    description:
+      "A delicious selection of party favourites, perfect for events and special gatherings.",
+    whatsappMessage:
+      "Hi Crave Nest! I'd like to enquire about small chops for an event. Please I'd like to know the available options, quantities and current price."
+  },
+  {
+    id: 6,
+    name: "Spring Rolls",
+    image: 'springRollsImg',
+    description:
+      "Crispy, flavourful spring rolls that make the perfect addition to any celebration.",
+    whatsappMessage:
+      "Hi Crave Nest! I'd like to enquire about spring rolls. Please I'd like to know the available quantities and current price."
+  },
+  {
+    id: 7,
+    name: "Bread",
+    image: 'breadImg',
+    description:
+      "Freshly baked bread made with care for a soft, satisfying bite.",
+    whatsappMessage:
+      "Hi Crave Nest! I'd like to enquire about your bread. Please I'd like to know the available options and current price."
+  },
+  {
+    id: 8,
+    name: "Yogurt",
+    image: 'yogurtImg',
+    description:
+      "Smooth, creamy and refreshing yogurt made for a deliciously satisfying treat.",
+    whatsappMessage:
+      "Hi Crave Nest! I'd like to enquire about yogurt. Please I'd like to know the available options, quantities and current price."
+  }
+];
 
 export const businessInfo = {
     name: "Crave Nest",
@@ -93,10 +180,6 @@ export const businessInfo = {
 };
 
 
-// ============================================================
-// CONTACT
-// ============================================================
-
 export const contactInfo = {
     phone: "+2349078006689",
 
@@ -106,11 +189,6 @@ export const contactInfo = {
 
     email: "", // Not provided yet
 };
-
-
-// ============================================================
-// SOCIAL MEDIA
-// ============================================================
 
 export const socialLinks = [
     {
@@ -124,11 +202,6 @@ export const socialLinks = [
         url: "https://www.tiktok.com/@the_ayoeffect",
     },
 ];
-
-
-// ============================================================
-// BUSINESS HOURS
-// ============================================================
 
 export const businessHours = {
     enquiries: {
@@ -152,10 +225,6 @@ export const businessHours = {
     },
 };
 
-
-// ============================================================
-// PRODUCT CATEGORIES
-// ============================================================
 
 export const productCategories = [
     {
@@ -210,29 +279,8 @@ export const productCategories = [
 ];
 
 
-// ============================================================
-// PRODUCTS
-// ============================================================
+// export const menuItems = [];
 
-// The owner said the complete product list will be provided separately.
-// We will populate this array once the actual menu is available.
-
-export const menuItems = [];
-
-
-// ============================================================
-// FEATURED CAKES
-// ============================================================
-
-// Cakes are the main specialty, so this section will eventually
-// contain selected cake products/designs.
-
-export const featuredCakes = [];
-
-
-// ============================================================
-// CUSTOM ORDERS
-// ============================================================
 
 export const customization = {
     available: true,
@@ -256,88 +304,6 @@ export const customization = {
         "Confirm your order",
     ],
 };
-
-
-// ============================================================
-// PRICING
-// ============================================================
-
-export const pricing = {
-    displayFixedPrices: false,
-
-    defaultLabel: "Request Current Price",
-
-    customOrderLabel: "Request a Quote",
-
-    description:
-        "Prices may vary depending on location, size, design, quantity, ingredients and level of customization.",
-};
-
-
-// ============================================================
-// ORDERING PROCESS
-// ============================================================
-
-export const orderingProcess = [
-    {
-        step: "01",
-        title: "Browse",
-        description:
-            "Explore our menu and discover the products available at Crave Nest.",
-    },
-
-    {
-        step: "02",
-        title: "Choose",
-        description:
-            "Select what you'd like and consider your preferred size, flavour, quantity or customization.",
-    },
-
-    {
-        step: "03",
-        title: "Enquire",
-        description:
-            "Send your requirements to us on WhatsApp so we can discuss your order.",
-    },
-
-    {
-        step: "04",
-        title: "Confirm",
-        description:
-            "We'll discuss availability, pricing, delivery or pickup and finalize your order.",
-    },
-];
-
-
-// ============================================================
-// CATERING & EVENTS
-// ============================================================
-
-export const cateringInfo = {
-    available: true,
-
-    title: "Catering & Event Orders",
-
-    description:
-        "Crave Nest accepts bulk orders, event orders, catering jobs and special food projects.",
-
-    customQuote: true,
-
-    outsideServiceAreas:
-        "Catering projects outside Kaduna and Abuja may be considered. Travel and logistics arrangements will need to be discussed.",
-
-    eventTypes: [], // To be provided
-
-    packages: [], // To be provided
-};
-
-
-// ============================================================
-// GALLERY
-// ============================================================
-
-// Actual product images will be added once the final edited assets
-// are ready.
 
 export const galleryItems = [
     {
@@ -377,21 +343,6 @@ export const galleryItems = [
     //     className: 'nine'
     // }
 ];
-
-
-// ============================================================
-// TESTIMONIALS
-// ============================================================
-
-// Real customer testimonials will be added when provided.
-// Do NOT use fabricated reviews.
-
-export const testimonials = [];
-
-
-// ============================================================
-// FAQ
-// ============================================================
 
 export const faqItems = [
     {
@@ -454,33 +405,6 @@ export const faqItems = [
             "Enquiries and orders can be received 24/7. Production, pickup and delivery times are arranged according to each order.",
     },
 ];
-
-
-// ============================================================
-// CTA
-// ============================================================
-
-export const cta = {
-    title: "Got a craving?",
-
-    description:
-        "Tell us what you're craving and let's create something you'll love.",
-
-    primaryButton: {
-        text: "Order on WhatsApp",
-        href: "https://wa.me/2349078006689",
-    },
-
-    secondaryButton: {
-        text: "Explore Menu",
-        href: "#menu",
-    },
-};
-
-
-// ============================================================
-// FOOTER
-// ============================================================
 
 export const footerLinks = [
     {

@@ -1,13 +1,12 @@
-.torn-edge {
+.torn-edge-top {
   position: absolute;
-  // top: -40px; // Aligns to the top edge of the light section
-  bottom: -65px;
+  top: -30px;
   left: 0;
   width: 100%;
-  height: 80px;
-  z-index: 4;
+  height: 60px;
+  z-index: 5;
   pointer-events: none;
-  overflow: hidden;
+  overflow: visible;
 
   svg {
     display: block;
