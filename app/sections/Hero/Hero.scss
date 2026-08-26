@@ -3,8 +3,10 @@
   background-color: var(--color-background);
   color: var(--color-text);
   padding-top: 20px;
-  z-index: 8;
+  z-index: 8; // keeps hero above any lower-stacked decorative elements (e.g. TornEdge)
 
+  // Two-column layout: content left, image right. Collapses to a single
+  // column at the 900px breakpoint below.
   .inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -19,6 +21,7 @@
     align-items: flex-start;
   }
 
+  // Script-font intro line above the main heading
   .tagline {
     color: var(--color-text);
     font-size: 26px;
@@ -34,6 +37,7 @@
     margin-bottom: 20px;
   }
 
+  // Highlights the second word of the heading ("Nest")
   .accent {
     color: var(--color-accent);
   }
@@ -46,6 +50,7 @@
     margin-bottom: 32px;
   }
 
+  // Wraps the two CTA buttons (Explore Menu / Order on WhatsApp)
   .buttons {
     display: flex;
     flex-wrap: wrap;
@@ -53,6 +58,7 @@
     margin-bottom: 44px;
   }
 
+  // Row of trust badges (icon + label) below the CTAs
   .features {
     display: flex;
     flex-wrap: wrap;
@@ -73,6 +79,7 @@
     height: 22px;
     color: var(--color-accent);
 
+    // Scales whatever react-icon is passed in to fill this box
     svg {
       width: 100%;
       height: 100%;
@@ -86,6 +93,8 @@
     color: var(--color-text-muted);
   }
 
+  // Square container for the hero product image. Sizing context for the
+  // next/image `fill` prop used in Hero.js.
   .imageWrapper {
     position: relative;
     width: 100%;
@@ -98,6 +107,12 @@
     object-fit: contain;
   }
 
+  // ---------------------------------------------------------------------
+  // Responsive breakpoints (largest → smallest)
+  // ---------------------------------------------------------------------
+
+  // Adds breathing room under the content column just before the layout
+  // switches to a single column at 900px.
   @media(max-width: 1225px){
     .content{
       padding-bottom: 40px;
@@ -114,6 +129,7 @@
     }
   }
 
+  // Collapse to a single column: content on top, image below.
   @media (max-width: 900px) {
     .inner {
       grid-template-columns: 1fr;
@@ -145,6 +161,7 @@
       justify-content: center;
     }
 
+    // Stack each feature's icon above its label instead of side by side
     .feature {
       flex-direction: column;
       text-align: center;
@@ -161,6 +178,7 @@
       font-size: 20px;
     }
 
+    // Buttons stretch full-width on very small screens
     .buttons {
       width: 100%;
     }

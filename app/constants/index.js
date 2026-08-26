@@ -164,7 +164,6 @@ export const businessInfo = {
         "Bread",
         "Meat Pies",
         "Small Chops",
-        "Doughnuts",
         "Pastries",
         "Event Catering",
     ],
@@ -298,11 +297,11 @@ export const customization = {
 
 export const galleryItems = [
     {
-        name: 'parfait1',
+        name: 'Cake-parfait',
         className: 'one'
     },
     {
-        name: 'yogurtpour',
+        name: 'Yogurt',
         className: 'two'
     },
     {
@@ -329,10 +328,10 @@ export const galleryItems = [
         name: 'hbd',
         className: 'eight'
     },
-    // {
-    //     name: 'vanilla',
-    //     className: 'nine'
-    // }
+    {
+        name: 'vanilla',
+        className: 'nine'
+    }
 ];
 
 export const faqItems = [

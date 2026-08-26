@@ -1,16 +1,21 @@
 import React from 'react'
 import Image from 'next/image'
-import './About.scss'
-import { PiChefHatBold, PiTrayLight, PiSmileyLight, PiSealCheckLight } from "react-icons/pi";
 import { GiWhisk } from "react-icons/gi";
 import { GoHeart } from "react-icons/go";
 import TornEdge from '@/app/components/TornEdge/TornEdge';
 import TornEdgeTop from '@/app/components/TornEdge/TornEdgeTop';
+import { PiChefHatBold, PiTrayLight, PiSmileyLight, PiSealCheckLight } from "react-icons/pi";
+import './About.scss'
 
+// About section: image + overlapping caption card on the left,
+// heading/copy/stats on the right. TornEdge/TornEdgeTop render the
+// torn-paper strips along the section's top and bottom edges.
 function About() {
   return (
     <section className='about container' id='about'>
-        {/* left */}
+
+        {/* Left column: main photo with a smaller caption card
+            overlapping its bottom-right corner (positioned in About.scss) */}
         <div className='about-left'>
             <div className='about-left-image'>
                 <Image
@@ -19,6 +24,9 @@ function About() {
                     alt='meat-pie Image'
                 />
             </div>
+
+            {/* Overlapping caption card: chef-hat icon, "About Us" label,
+                and a short script-style line ("Baked from the heart.") */}
             <div className='about-text'>
                 <PiChefHatBold size={40} color='var(--color-accent)'/>
                 <span className='script'>About Us</span>
@@ -26,12 +34,15 @@ function About() {
             </div>
         </div>
 
-        {/* right */}
+        {/* Right column: section label, heading, description, and the
+            trio of stat callouts below */}
         <div className='about-right'>
             <span className='script'>About Us</span>
             <h2>More than just food, <br/> it's an <span>experience.</span></h2>
             <p>At Crave Nest, we create freshly baked goods and delicious meals that bring people together. Whether it's a small treat or a big celebration, we deliver quality, taste, and care in every bite.</p>
 
+            {/* Quick-glance stats, each pairing an icon with a
+                headline value (e.g. "50+") and a short label */}
             <div className='about-stats'>
                 <div className='stat'>
                     <PiTrayLight size={30}/>
@@ -56,13 +67,14 @@ function About() {
                 </div>
             </div>
 
+            {/* Faint decorative whisk icon in the background (styled via
+                .about-doodle in About.scss, hidden on smaller screens) */}
             <GiWhisk className='about-doodle' strokeWidth={0.2}/>
         </div>
+
+        {/* Decorative torn-paper edges along the top and bottom of the section */}
         <TornEdgeTop color='var(--color-secondary)'/>
         <TornEdge color='var(--color-secondary)'/>
-        {/* <TornEdge color='red'/> */}
-
-
     </section>
   )
 }
