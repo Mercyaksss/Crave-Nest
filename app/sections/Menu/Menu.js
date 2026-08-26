@@ -36,7 +36,7 @@ function Menu() {
               >
                 <div className='menu-item-image'>
                   <Image
-                    src={`/images/${item.image}.png`}
+                    src={`/images/${item.image}`}
                     alt={item.name}
                     fill
                     sizes="(max-width: 700px) 60vw, 320px"

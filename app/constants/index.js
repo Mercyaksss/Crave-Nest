@@ -77,7 +77,7 @@ export const menuItems = [
   {
     id: 1,
     name: "Custom Cakes",
-    image: 'gradCake',
+    image: 'Custom-cake.jpg',
     description:
       "Beautifully crafted cakes designed to make every celebration extra special.",
     whatsappMessage:
@@ -86,7 +86,7 @@ export const menuItems = [
   {
     id: 2,
     name: "Cupcakes",
-    image: 'cupcakesImg',
+    image: 'Cup-cakes.jpg',
     description:
       "Delicious, beautifully decorated cupcakes made for celebrations, events and sweet cravings.",
     whatsappMessage:
@@ -95,7 +95,7 @@ export const menuItems = [
   {
     id: 3,
     name: "Parfaits",
-    image: 'parfaitsImg',
+    image: 'Cake-parfait.png',
     description:
       "Creamy and indulgent parfaits, perfect for celebrations, events or a little treat.",
     whatsappMessage:
@@ -104,7 +104,7 @@ export const menuItems = [
   {
     id: 4,
     name: "Meat Pies",
-    image: 'meatpieImage2',
+    image: 'Meat-pie.jpg',
     description:
       "Freshly baked, savoury meat pies made for everyday cravings and special occasions.",
     whatsappMessage:
@@ -113,7 +113,7 @@ export const menuItems = [
   {
     id: 5,
     name: "Small Chops",
-    image: 'springrolls',
+    image: 'Small-chops.jpg',
     description:
       "A delicious selection of party favourites, perfect for events and special gatherings.",
     whatsappMessage:
@@ -121,26 +121,17 @@ export const menuItems = [
   },
   {
     id: 6,
-    name: "Spring Rolls",
-    image: 'springRollsImg',
-    description:
-      "Crispy, flavourful spring rolls that make the perfect addition to any celebration.",
-    whatsappMessage:
-      "Hi Crave Nest! I'd like to enquire about spring rolls. Please I'd like to know the available quantities and current price."
-  },
-  {
-    id: 7,
     name: "Bread",
-    image: 'breadImg',
+    image: 'Bread.png',
     description:
       "Freshly baked bread made with care for a soft, satisfying bite.",
     whatsappMessage:
       "Hi Crave Nest! I'd like to enquire about your bread. Please I'd like to know the available options and current price."
   },
   {
-    id: 8,
+    id: 7,
     name: "Yogurt",
-    image: 'yogurtImg',
+    image: 'Yogurt.png',
     description:
       "Smooth, creamy and refreshing yogurt made for a deliciously satisfying treat.",
     whatsappMessage:

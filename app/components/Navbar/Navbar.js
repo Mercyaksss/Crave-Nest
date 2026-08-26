@@ -7,7 +7,6 @@ import Button from '../Button/Button'
 import { FaWhatsapp } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import TornEdge from '../TornEdge/TornEdge';
-import { GiCupcake } from "react-icons/gi";
 import { CiMenuKebab } from "react-icons/ci";
 
 function Navbar() {
