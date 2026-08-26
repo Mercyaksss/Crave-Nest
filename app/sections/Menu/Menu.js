@@ -1,18 +1,17 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaArrowRightLong } from "react-icons/fa6";
-import { menuItems } from '../../constants'
+import { menuItems,WHATSAPP_NUMBER } from '../../constants'
 import './Menu.scss'
 import TornEdgeTop from '@/app/components/TornEdge/TornEdgeTop';
 import TornEdge from '@/app/components/TornEdge/TornEdge';
 
 // WhatsApp business number the "Request a quote" links message.
 // Update to match the real number used elsewhere on the site.
-const WHATSAPP_NUMBER = '2349012345678';
 
 function Menu() {
   return (
-    <section className='menu-section'>
+    <section id='menu' className='menu-section'>
       <div className='container'>
         <h2 className='menu-heading'>
           Made to satisfy every <span className='accent'>craving.</span>

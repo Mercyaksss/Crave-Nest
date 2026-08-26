@@ -8,7 +8,7 @@ import './Hero.scss'
 
 function Hero() {
   return (
-    <section className='hero'>
+    <section id='home' className='hero'>
       <div className='container inner'>
         <div className='content'>
           <p className='script tagline'>
@@ -29,7 +29,7 @@ function Hero() {
              <Button 
                 title='Explore Menu'
                 icon={<GoArrowRight />}
-                href="https://wa.me/2349012345678"
+                href="#menu"
                 background='var(--color-accent)'
                 color='var(--color-text-dark)'
             />
@@ -37,7 +37,7 @@ function Hero() {
             <Button 
                 title='Order on WhatsApp'
                 icon={<FaWhatsapp />}
-                href="https://wa.me/2349012345678"
+                href="https://wa.me/2349078006689"
                 border= '1px solid rgba(255, 255, 255, 0.35)'
             />
           </div>

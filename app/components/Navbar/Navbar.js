@@ -8,6 +8,7 @@ import { FaWhatsapp } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import TornEdge from '../TornEdge/TornEdge';
 import { GiCupcake } from "react-icons/gi";
+import { CiMenuKebab } from "react-icons/ci";
 
 function Navbar() {
   const [isActive, setIsActive] = useState('Home');
@@ -67,7 +68,7 @@ function Navbar() {
             onClick={toggleMenu}
           />
         ) : (
-          <GiCupcake
+          <CiMenuKebab
             size={25}
             className='hamburger-icon'
             onClick={toggleMenu}
@@ -95,6 +96,7 @@ function Navbar() {
             title='Order on WhatsApp'
             icon={<FaWhatsapp color='#C9A24A' size={25} />}
             color='#C9A24A'
+            href="https://wa.me/2349078006689"
           />
         </div>
       </nav>

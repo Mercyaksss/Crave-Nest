@@ -406,6 +406,8 @@ export const faqItems = [
     },
 ];
 
+export const WHATSAPP_NUMBER = '2349078006689';
+
 export const footerLinks = [
     {
         title: "Explore",
