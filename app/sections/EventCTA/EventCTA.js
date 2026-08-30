@@ -6,9 +6,13 @@ import { contactInfo } from '@/app/constants'
 import './EventCTA.scss'
 import TornEdge from '@/app/components/TornEdge/TornEdge'
 
+// Simple banner CTA prompting event/catering enquiries, with a single
+// WhatsApp button. `contactInfo.whatsappLink` (from constants) keeps the
+// number in one place so it doesn't need updating in multiple components.
 function EventCTA() {
   return (
         <section className='event-cta container'>
+                {/* Icon + heading/description, on the left */}
                 <div className='event-cta-info'>
                     <span className='event-cta-icon'>
                         <MdEditCalendar />
@@ -20,6 +24,7 @@ function EventCTA() {
                     </div>
                 </div>
 
+                {/* WhatsApp CTA, on the right (stacks below on small screens) */}
                 <Button
                     title='Order on WhatsApp'
                     href={contactInfo.whatsappLink}
@@ -27,6 +32,8 @@ function EventCTA() {
                     color='var(--color-accent)'
                     background='var(--color-background-dark)'
                 />
+
+        {/* Decorative torn-paper edge along the bottom of the section */}
         <TornEdge color='var(--color-secondary)'/>        
         </section>
   )

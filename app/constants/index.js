@@ -77,7 +77,7 @@ export const menuItems = [
   {
     id: 1,
     name: "Custom Cakes",
-    image: 'Custom-cake.jpg',
+    image: 'Custom-cake.png',
     description:
       "Beautifully crafted cakes designed to make every celebration extra special.",
     whatsappMessage:
@@ -86,7 +86,7 @@ export const menuItems = [
   {
     id: 2,
     name: "Cupcakes",
-    image: 'Cup-cakes.jpg',
+    image: 'Cup-cakes.png',
     description:
       "Delicious, beautifully decorated cupcakes made for celebrations, events and sweet cravings.",
     whatsappMessage:
@@ -113,7 +113,7 @@ export const menuItems = [
   {
     id: 5,
     name: "Small Chops",
-    image: 'Small-chops.jpg',
+    image: 'Small-chops.png',
     description:
       "A delicious selection of party favourites, perfect for events and special gatherings.",
     whatsappMessage:
@@ -177,7 +177,7 @@ export const contactInfo = {
 
     whatsappLink: "https://wa.me/2349078006689",
 
-    email: "", // Not provided yet
+    email: "ekashilistephen@gmail.com",
 };
 
 export const socialLinks = [
@@ -215,63 +215,6 @@ export const businessHours = {
     },
 };
 
-
-export const productCategories = [
-    {
-        id: "cakes",
-        name: "Cakes",
-        description:
-            "Custom cakes created for celebrations, special occasions, and everyday indulgence.",
-        featured: true,
-        customizable: true,
-    },
-
-    {
-        id: "bread",
-        name: "Bread",
-        description: "",
-        featured: false,
-        customizable: true,
-    },
-
-    {
-        id: "meat-pies",
-        name: "Meat Pies",
-        description: "",
-        featured: false,
-        customizable: true,
-    },
-
-    {
-        id: "small-chops",
-        name: "Small Chops",
-        description: "",
-        featured: false,
-        customizable: true,
-    },
-
-    {
-        id: "doughnuts",
-        name: "Doughnuts",
-        description: "",
-        featured: false,
-        customizable: true,
-    },
-
-    {
-        id: "pastries",
-        name: "Other Pastries",
-        description:
-            "A selection of other baked goods and pastries from Crave Nest.",
-        featured: false,
-        customizable: true,
-    },
-];
-
-
-// export const menuItems = [];
-
-
 export const customization = {
     available: true,
 
@@ -305,11 +248,11 @@ export const galleryItems = [
         className: 'two'
     },
     {
-        name: 'sprinklescake',
+        name: 'Foil-cake-sprinkles',
         className: 'three'
     },
     {
-        name: 'gradcake',
+        name: 'Custom-grad-cake',
         className: 'four'
     },
     {
@@ -331,6 +274,10 @@ export const galleryItems = [
     {
         name: 'vanilla',
         className: 'nine'
+    },
+    {
+        name: 'Cake-parfait-2',
+        className: 'ten'
     }
 ];
 

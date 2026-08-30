@@ -1,12 +1,9 @@
 import React from 'react'
 import Link from 'next/link'
 import { FaInstagram, FaTiktok, FaWhatsapp, FaPhone, FaEnvelope, FaLocationDot, FaClock } from "react-icons/fa6"
-import { brand, navLinks, productCategories, contactInfo, socialLinks, businessInfo, businessHours } from '@/app/constants'
+import { brand, navLinks, menuItems, contactInfo, socialLinks, businessInfo, businessHours } from '@/app/constants'
 import './Footer.scss'
 import Image from 'next/image'
-
-// dummy placeholder until the real business email is provided
-const displayEmail = contactInfo.email || 'hello@cravenest.com'
 
 const socialIcons = {
     Instagram: FaInstagram,
@@ -64,9 +61,9 @@ export default function Footer() {
             <div className='footer-links'>
                 <h4>Our Menu</h4>
                 <ul>
-                    {productCategories.map((item) => (
+                    {menuItems.map((item) => (
                         <li key={item.id}>
-                            <Link href='#menu'>{item.name}</Link>
+                            <Link href={`#${item.id}`}>{item.name}</Link>
                         </li>
                     ))}
                 </ul>
@@ -81,7 +78,7 @@ export default function Footer() {
                     </li>
                     <li>
                         <FaEnvelope />
-                        <a href={`mailto:${displayEmail}`}>{displayEmail}</a>
+                        <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
                     </li>
                     <li>
                         <FaLocationDot />
@@ -93,9 +90,6 @@ export default function Footer() {
                     </li>
                 </ul>
             </div>
-
-            {/* <PiChefHatLight className='footer-doodle' /> */}
-
         </div>
 
         <div className='footer-bottom'>

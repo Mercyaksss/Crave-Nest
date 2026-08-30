@@ -1,7 +1,7 @@
 header{
     position: fixed;
     width: 100%;
-    height: 80px;
+    height: 80px; // keep in sync with HEADER_OFFSET in Navbar.js
     z-index: 999;
     background-color: var(--color-background-dark);
 
@@ -14,6 +14,9 @@ header{
 
 
 
+        // Base link styles — shared by both the desktop nav-links list and
+        // the mobile dropdown's list (see .mobile-menu ul below, which
+        // overrides a few of these for the stacked mobile layout).
         ul {
             display: flex;
             gap: 24px;
@@ -27,6 +30,7 @@ header{
                 padding-bottom: 6px; 
                 transition: color 0.3s ease;
 
+                // Animated underline beneath each link
                 &::after {
                     content: '';
                     position: absolute;
@@ -38,6 +42,7 @@ header{
                     transition: width 0.3s ease-in-out; 
                 }
 
+                // Active link: accent color + full-width underline
                 &.active {
                     color: #C9A24A; 
 
@@ -67,6 +72,8 @@ header{
     }
 }
 
+// Small/medium screens: swap the inline nav + CTA for a hamburger-triggered
+// dropdown menu.
 @media(max-width: 950px){
     header{
         nav{ 
@@ -118,6 +125,8 @@ header{
                     pointer-events: auto;
                 }
 
+                // Mobile link list: stacked and centered, instead of the
+                // desktop nav's horizontal row.
                 ul {
                     display: flex;
                     flex-direction: column;

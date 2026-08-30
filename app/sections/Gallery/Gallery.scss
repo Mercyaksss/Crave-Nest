@@ -4,7 +4,6 @@
     padding-top: 80px;
     padding-bottom: 40px;
     background-color: var(--color-primary);
-    // margin-top: 100px;
     z-index: 6;
 
     h2{
@@ -16,97 +15,145 @@
         margin-bottom: 20px;
     }
 
-    &-grid{
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(2, 220px);
-        gap: 10px;
-        padding-bottom: 20px;
+    // -------------------------------------------------------------------
+    // Carousel
+    // -------------------------------------------------------------------
 
-        // clean, non-overlapping desktop mosaic:
-        // row1: one(tall,col1) | two(wide,col2-3) | three(col4)
-        // row2: one(cont.)     | four(wide,col2-3) | five(col4)
-        .one{
-            grid-column: 1;
-            grid-row: 1 / span 2;
+    &-carousel{
+        // Card size + gap as custom properties so both the track's
+        // centering padding and each card's dimensions stay in sync —
+        // change these instead of editing multiple values separately.
+        --card-width: 320px;
+        --card-height: 400px;
+        --card-gap: 24px;
+
+        position: relative;
+    }
+
+    &-track{
+        display: flex;
+        align-items: center;
+        gap: var(--card-gap);
+        overflow-x: auto;
+        scroll-snap-type: x mandatory; // snaps to the nearest card after a swipe/drag
+        scroll-behavior: smooth;
+
+        // Horizontal padding equal to half the leftover space lets the
+        // first and last cards scroll all the way to center, instead of
+        // stopping flush against the edge.
+        padding: 40px calc((100% - var(--card-width)) / 2);
+
+        // Hide the scrollbar — scroll-snap + arrows/swipe are the intended
+        // way to navigate, a visible scrollbar here would be visual noise.
+        scrollbar-width: none;
+        &::-webkit-scrollbar{
+            display: none;
+        }
+    }
+
+    &-card{
+        position: relative;
+        flex-shrink: 0;
+        width: var(--card-width);
+        height: var(--card-height);
+        border-radius: 24px;
+        overflow: hidden;
+        scroll-snap-align: center;
+
+        // Inactive state: smaller and faded, so the active card visually
+        // pops forward from its neighbors.
+        opacity: 0.55;
+        transform: scale(0.85);
+        transition: transform 0.4s ease, opacity 0.4s ease;
+
+        img{
+            object-fit: cover;
         }
 
-        .two{
-            grid-column: 2 / span 2;
-            grid-row: 1;
+        // Active card (set via the `active` class in Gallery.js, driven by
+        // the IntersectionObserver): full size, full opacity, lifted above
+        // its neighbors with a shadow.
+        &.active{
+            opacity: 1;
+            transform: scale(1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            z-index: 2;
         }
+    }
 
-        .three{
-            grid-row: span 2;
-        }
+    // Prev/next controls, centered below the carousel
+    &-nav{
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 12px;
 
-        .four{
-            grid-row: span 2;
-        }
+        button{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid var(--color-text-dark);
+            background: none;
+            color: var(--color-text-dark);
+            cursor: pointer;
+            transition: background-color 0.25s ease, opacity 0.25s ease;
 
-        .five{
-            grid-row: span 2;
-        }
+            &:hover:not(:disabled){
+                background-color: rgba(3, 16, 31, 0.08);
+            }
 
-        .image-container{
-            position: relative;
-            width: 100%;
-            height: 100%;
-            min-height: 220px;
-
-            img{
-                border-radius: 20px;
+            // Reached the first/last card — no further to go in that direction
+            &:disabled{
+                opacity: 0.35;
+                cursor: default;
             }
         }
     }
 }
 
-// Small laptops / large tablets: 3-column mosaic, dense auto-flow
-// fills gaps automatically so we don't have to hand-place every item
-@media(max-width: 1024px){
-    .gallery{
-        padding-top: 70px;
+// =========================================================================
+// Responsive breakpoints (largest → smallest)
+// =========================================================================
 
-        &-grid{
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: none;
-            grid-auto-rows: 200px;
-            grid-auto-flow: dense;
-
-            .one{
-                grid-column: auto;
-                grid-row: span 2;
-            }
-
-            .two{
-                grid-column: span 2;
-            }
-
-            .image-container{
-                min-height: 200px;
-            }
-        }
-    }
-}
-
-// Tablets in portrait: 2-column mosaic
-@media(max-width: 768px){
+// Tablets
+@media(max-width: 900px){
     .gallery{
         padding-top: 60px;
-        margin-top: 0;
 
-        &-grid{
-            grid-template-columns: repeat(2, 1fr);
-            grid-auto-rows: 120px;
-            gap: 8px;
+        &-carousel{
+            --card-width: 260px;
+            --card-height: 340px;
+            --card-gap: 18px;
+        }
+    }
+}
 
-            .image-container{
-                min-height: 120px;
+// Phones
+@media(max-width: 520px){
+    .gallery{
+        padding-top: 50px;
 
-                img{
-                    border-radius: 14px;
-                }
-            }
+        &-carousel{
+            --card-width: 220px;
+            --card-height: 300px;
+            --card-gap: 14px;
+        }
+
+        &-track{
+            padding-top: 24px;
+            padding-bottom: 24px;
+        }
+
+        &-card{
+            border-radius: 16px;
+        }
+
+        &-nav button{
+            width: 38px;
+            height: 38px;
         }
     }
 }

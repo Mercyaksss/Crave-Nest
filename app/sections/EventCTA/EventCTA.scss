@@ -2,13 +2,14 @@
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; // pushes info left, button right on desktop
     flex-wrap: wrap;
     gap: 20px;
     padding-top: 50px;
     padding-bottom: 30px;
     background-color: var(--color-secondary);
 
+    // Icon + heading/description group
     &-info{
         display: flex;
         align-items: center;
@@ -28,6 +29,7 @@
         }
     }
 
+    // Circular calendar-icon badge next to the heading
     &-icon{
         display: flex;
         align-items: center;
@@ -41,10 +43,15 @@
         font-size: 26px;
     }
 
+    // Prevents the WhatsApp button from shrinking when space is tight
     .cta-btn{
         flex-shrink: 0;
     }
 }
+
+// =========================================================================
+// Responsive breakpoints (largest → smallest)
+// =========================================================================
 
 // Tablets
 @media(max-width: 768px){
@@ -61,7 +68,7 @@
     }
 }
 
-// Phones
+// Phones — stacks info above the button, and centers everything
 @media(max-width: 480px){
     .event-cta{
         flex-direction: column;

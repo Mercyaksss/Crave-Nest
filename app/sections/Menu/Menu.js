@@ -9,10 +9,16 @@ import TornEdge from '@/app/components/TornEdge/TornEdge';
 // WhatsApp business number the "Request a quote" links message.
 // Update to match the real number used elsewhere on the site.
 
+// Menu section: a zigzagging list of menu categories, each rendered as a
+// circular image overlapping a torn-paper banner (name, description, and a
+// "Request a quote" link that opens WhatsApp with a prefilled message).
+// `menuItems` (and its shape: id/name/image/description/whatsappMessage)
+// lives in constants so content can be edited without touching this file.
 function Menu() {
   return (
     <section id='menu' className='menu-section'>
       <div className='container'>
+        <span className='script center'>Our Menu</span>
         <h2 className='menu-heading'>
           Made to satisfy every <span className='accent'>craving.</span>
         </h2>
@@ -33,6 +39,7 @@ function Menu() {
               <div
                 className={`menu-item ${isReversed ? 'menu-item--reverse' : ''}`}
                 key={item.id}
+                id={`${item.id}`}
               >
                 <div className='menu-item-image'>
                   <Image
@@ -43,6 +50,10 @@ function Menu() {
                   />
                 </div>
 
+                {/* Torn-paper banner: top/bottom torn edges are separate
+                    decorative components sandwiching the text content,
+                    rather than a CSS clip-path, so the "tear" art can be
+                    reused/swapped independently of this layout. */}
                 <div className='menu-item-banner'>
                   <TornEdgeTop color='var(--color-secondary)'/>
 

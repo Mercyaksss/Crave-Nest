@@ -4,31 +4,38 @@
   padding-bottom: 80px;
   overflow: hidden; // keeps the overlapping banners from causing horizontal scroll
 
+  .center{
+    display: block;
+    text-align: center;
+  }
+
   .menu-heading {
     text-align: center;
     font-size: clamp(28px, 4vw, 40px);
     font-weight: 600;
     margin-bottom: 56px;
 
+    // Highlights "craving." in the heading
     .accent {
       color: var(--color-primary);
     }
   }
 
+  // Vertical stack of menu-item rows
   .menu-list {
     display: flex;
     flex-direction: column;
     gap: 48px;
   }
 
-  // Each row: circular image + overlapping dark banner, side by side.
+  // Each row: circular image + overlapping torn-paper banner, side by side.
   .menu-item {
     display: flex;
     align-items: center;
     justify-content: center;
 
     .menu-item-image {
-      position: relative;
+      position: relative; // sizing context for the next/image `fill` prop
       width: 280px;
       height: 280px;
       flex-shrink: 0;
@@ -46,12 +53,17 @@
       }
     }
 
+    // Torn-paper text card that overlaps the image. The TornEdgeTop/TornEdge
+    // components rendered inside it (see Menu.js) supply the jagged top and
+    // bottom borders — this block just handles sizing, spacing, and color.
     .menu-item-banner {
       position: relative;
       z-index: 1; // tucks slightly under the image edge
       background-color: var(--color-secondary);
       max-width: 480px;
-      padding: 36px 48px;
+      // Extra left padding buffers the text from the image, which overlaps
+      // this side via the negative margin-left below.
+      padding: 36px 48px 36px 100px;
       margin-left: -70px; // pulls banner left edge under the image
       border-radius: 4px;
 
@@ -69,6 +81,7 @@
       }
     }
 
+    // "Request a quote" WhatsApp link
     .menu-item-cta {
       display: inline-flex;
       align-items: center;
@@ -92,6 +105,10 @@
       .menu-item-banner {
         margin-left: 0;
         margin-right: -70px;
+        // Mirror the padding: now the image overlaps the right side, so
+        // that side needs the extra buffer instead of the left.
+        padding-left: 48px;
+        padding-right: 100px;
       }
     }
   }
@@ -102,6 +119,8 @@
 
   // Below this, drop the side-by-side overlap and stack image over banner.
   @media (max-width: 700px) {
+    // Applies to both default and reversed rows — the zigzag distinction
+    // no longer matters once everything is a single stacked column.
     .menu-item,
     .menu-item.menu-item--reverse {
       flex-direction: column;
@@ -114,6 +133,8 @@
       margin-bottom: -40px; // small vertical overlap instead of horizontal
     }
 
+    // Reset the horizontal overlap margins from both row directions and
+    // let the banner span the full width beneath the image.
     .menu-item .menu-item-banner,
     .menu-item.menu-item--reverse .menu-item-banner {
       margin: 0;
@@ -128,6 +149,7 @@
     }
   }
 
+  // Phones: shrink the image and heading further
   @media (max-width: 400px) {
     .menu-item .menu-item-image {
       width: 180px;

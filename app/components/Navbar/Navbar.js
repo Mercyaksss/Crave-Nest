@@ -9,7 +9,15 @@ import { IoClose } from "react-icons/io5";
 import TornEdge from '../TornEdge/TornEdge';
 import { CiMenuKebab } from "react-icons/ci";
 
+// Height (px) of the fixed header — used to offset scroll position so a
+// section's top isn't hidden underneath it. Keep this in sync with the
+// `height: 80px` set on `header` in Navbar.scss.
+const HEADER_OFFSET = 80;
+
+// Site navbar: desktop inline links + CTA button, collapsing into a
+// hamburger-triggered dropdown menu on small/medium screens.
 function Navbar() {
+  // Currently active/highlighted nav link (by name)
   const [isActive, setIsActive] = useState('Home');
 
   // Tracks whether the small-screen dropdown menu is open or closed.
@@ -19,11 +27,33 @@ function Navbar() {
   // Flips the menu open/closed. Called when the hamburger/close icon is clicked.
   const toggleMenu = () => setIsMenuOpen((prevState) => !prevState);
 
-  // Runs when a nav link is clicked: marks it active AND closes the mobile
-  // menu, so picking a link doesn't leave the dropdown open behind it.
-  const handleLinkClick = (linkName) => {
-    setIsActive(linkName);
+  // Runs when a nav link is clicked: marks it active, closes the mobile
+  // menu (if open), and scrolls to the target section manually.
+  //
+  // We deliberately don't rely on the link's native `href="#id"` jump here.
+  // Closing the mobile menu updates state (and therefore the DOM/CSS —
+  // pointer-events, collapsing height) in the same click event, and on some
+  // browsers that's enough to make the browser silently drop the pending
+  // in-page navigation instead of completing it. Scrolling manually via
+  // scrollIntoView-style math sidesteps that entirely, and also lets us
+  // account for the fixed header height so the section isn't left hidden
+  // underneath it.
+  //
+  // Each navLinks item stores the target as a full `href` string (e.g.
+  // "#home"), not a separate `id` — so we strip the leading "#" to get the
+  // element id to scroll to.
+  const handleLinkClick = (event, link) => {
+    event.preventDefault();
+
+    setIsActive(link.name);
     setIsMenuOpen(false);
+
+    const targetId = link.href.replace('#', '');
+    const target = document.getElementById(targetId);
+    if (target) {
+      const targetTop = target.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+      window.scrollTo({ top: targetTop, behavior: 'smooth' });
+    }
   };
 
   return (
@@ -41,8 +71,8 @@ function Navbar() {
           {navLinks.map((link) => (
             <li key={link.name}>
               <a
-                href={`#${link.id}`}
-                onClick={() => handleLinkClick(link.name)}
+                href={link.href}
+                onClick={(event) => handleLinkClick(event, link)}
                 className={isActive === link.name ? 'active' : ''}
               >
                 {link.name}
@@ -81,8 +111,8 @@ function Navbar() {
             {navLinks.map((link) => (
               <li key={link.name}>
                 <a
-                  href={`#${link.id}`}
-                  onClick={() => handleLinkClick(link.name)}
+                  href={link.href}
+                  onClick={(event) => handleLinkClick(event, link)}
                   className={isActive === link.name ? 'active' : ''}
                 >
                   {link.name}

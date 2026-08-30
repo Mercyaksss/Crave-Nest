@@ -7,11 +7,6 @@
     color: var(--color-white);
     z-index: 5;
 
-    > .script{
-        color: var(--color-accent);
-        font-size: 24px;
-    }
-
     > h2{
         font-size: clamp(32px, 4vw, 48px);
         line-height: 1.25;
@@ -19,11 +14,13 @@
         margin-top: 10px;
         margin-bottom: 50px;
 
+        // Highlights "questions?" in the heading
         span{
             color: var(--color-primary);
         }
     }
 
+    // Vertical stack of accordion items, centered and width-capped
     &-list{
         display: flex;
         flex-direction: column;
@@ -40,20 +37,11 @@
         overflow: hidden;
         transition: border-color 0.3s ease, background-color 0.3s ease;
 
-        .faq-answer{
-            display: none;
-            transition:  display 0.5s ease;
-        }
-
+        // Open state: accent border/background, icon accented. The answer's
+        // own open/close animation lives on &-answer / &-answer.open below.
         &.open{
             border-color: var(--color-accent);
             background-color: rgba(201, 162, 74, 0.06);
-
-            .faq-answer{
-                display: block;
-                grid-template-rows: 1fr;
-                padding-top: 0;
-            }
 
             .faq-question svg{
                 color: var(--color-accent);
@@ -61,6 +49,7 @@
         }
     }
 
+    // Clickable question row (the whole thing is a <button> in FAQ.js)
     &-question{
         width: 100%;
         display: flex;
@@ -80,6 +69,7 @@
             color: var(--color-white);
         }
 
+        // Plus/minus icon, color-transitions when the item opens
         svg{
             flex-shrink: 0;
             font-size: 14px;
@@ -88,10 +78,17 @@
         }
     }
 
+    // Collapsible answer. Closed by default via max-height: 0 + overflow:
+    // hidden, then expanded by the .open modifier below (same pattern used
+    // for the mobile nav menu, kept consistent across the codebase). The
+    // 500px max-height is just a ceiling large enough to fit any answer —
+    // it doesn't need to match the real content height for this to animate
+    // smoothly, since overflow: hidden clips it at the actual content size.
     &-answer{
-        display: grid;
-        grid-template-rows: 0fr;
-        transition: grid-template-rows 0.35s ease;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.4s ease, opacity 0.3s ease;
 
         p{
             overflow: hidden;
@@ -102,12 +99,18 @@
             margin: 0;
         }
 
-        // grid-template-rows trick needs the child wrapped so it can collapse to 0
-        > *{
-            min-height: 0;
+        // Expanded state: opens up to the max-height ceiling and fades in.
+        // .faq-item.open is set via the `open` class toggled in FAQ.js.
+        .faq-item.open &{
+            max-height: 500px;
+            opacity: 1;
         }
     }
 }
+
+// =========================================================================
+// Responsive breakpoints (largest → smallest)
+// =========================================================================
 
 // Tablets
 @media(max-width: 768px){
