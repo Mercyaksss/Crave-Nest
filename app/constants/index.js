@@ -239,50 +239,18 @@ export const customization = {
 };
 
 export const galleryItems = [
-    {
-        name: 'Cake-parfait',
-        className: 'one'
-    },
-    {
-        name: 'Yogurt',
-        className: 'two'
-    },
-    {
-        name: 'Foil-cake-sprinkles',
-        className: 'three'
-    },
-    {
-        name: 'Custom-grad-cake',
-        className: 'four'
-    },
-    {
-        name: 'redVelvetCake',
-        className: 'five'
-    },
-    {
-        name: 'cupcakes',
-        className: 'six'
-    },
-    {
-        name: 'smallchopsraw',
-        className: 'seven'
-    },
-    {
-        name: 'hbd',
-        className: 'eight'
-    },
-    {
-        name: 'vanilla',
-        className: 'nine'
-    },
-    {
-        name: 'Cake-parfait-2',
-        className: 'ten'
-    },
-    {
-        name: 'meatpieImage',
-        className: 'eleven'
-    }
+    'Cake-parfait', 
+    'Yogurt', 
+    'Foil-cake-sprinkles', 
+    'Custom-grad-cake', 
+    'redVelvetCake', 
+    'smallchopsraw', 
+    'hbd',
+    'Cake-parfait-2',
+    'meatpieImage',
+    'vanilla-foil-cake',
+    'cake-parfait2',
+    'chocolate-foil-cake',
 ];
 
 export const faqItems = [

@@ -138,7 +138,7 @@ function Gallery() {
                             className={`gallery-card ${index === activeIndex ? 'active' : ''}`}
                         >
                             <Image
-                                src={`/images/${item.name}.png`}
+                                src={`/images/${item}.png`}
                                 fill
                                 sizes="(max-width: 600px) 70vw, 340px"
                                 alt='gallery images'
