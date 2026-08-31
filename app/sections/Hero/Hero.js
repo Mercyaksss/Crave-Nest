@@ -1,16 +1,47 @@
+'use client';
+
+import { useRef } from 'react';
 import Image from 'next/image';
 import { features } from '@/app/constants';
 import Button from '@/app/components/Button/Button';
 import { FaWhatsapp } from "react-icons/fa";
 import { GoArrowRight } from "react-icons/go";
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 import './Hero.scss'
 
 // Landing hero: intro copy + CTAs on the left, product image on the right.
 // `features` (icon + label list) is pulled from app-wide constants so it can
 // be reused/updated in one place.
 function Hero() {
+  // Scopes the load-in animation below to just this section.
+  const heroRef = useRef(null);
+
+  // Subtle entrance animation, played once when the page first loads.
+  // Like the navbar, the hero is visible immediately (not scrolled into
+  // view), so this is a plain on-mount animation rather than the
+  // scroll-triggered useScrollReveal used by sections further down the
+  // page. Built as a single timeline so each piece cascades into the next
+  // (slightly overlapping via the negative offsets below) instead of every
+  // element animating in isolation.
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      defaults: { ease: 'power2.out', duration: 0.6 },
+    });
+
+    tl.from('.tagline', { opacity: 0, y: 20 })
+      .from('.heading', { opacity: 0, y: 24 }, '-=0.4')
+      .from('.description', { opacity: 0, y: 20 }, '-=0.35')
+      .from('.buttons', { opacity: 0, y: 16 }, '-=0.3')
+      .from('.features li', { opacity: 0, y: 14, stagger: 0.08 }, '-=0.25')
+      // Image fades/scales in slightly, overlapping with the text cascade
+      // above rather than waiting for it to finish — keeps the whole
+      // entrance feeling like one moment instead of two separate beats.
+      .from('.imageWrapper', { opacity: 0, scale: 0.96 }, '-=0.6');
+  }, { scope: heroRef });
+
   return (
-    <section id='home' className='hero'>
+    <section id='home' className='hero' ref={heroRef}>
       <div className='container inner'>
 
         {/* Left column: tagline, heading, description, CTAs, feature list */}

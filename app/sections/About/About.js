@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react'
 import Image from 'next/image'
 import { GiWhisk } from "react-icons/gi";
@@ -5,21 +7,35 @@ import { GoHeart } from "react-icons/go";
 import TornEdge from '@/app/components/TornEdge/TornEdge';
 import TornEdgeTop from '@/app/components/TornEdge/TornEdgeTop';
 import { PiChefHatBold, PiTrayLight, PiSmileyLight, PiSealCheckLight } from "react-icons/pi";
+import { useScrollReveal } from '@/app/hooks/useScrollReveal';
 import './About.scss'
 
 // About section: image + overlapping caption card on the left,
 // heading/copy/stats on the right. TornEdge/TornEdgeTop render the
 // torn-paper strips along the section's top and bottom edges.
 function About() {
+  // Scroll-triggered entrance: the main photo, the overlapping caption
+  // card, and each direct child of the right column (label, heading,
+  // paragraph, stats block, doodle icon) fade + slide up one after another
+  // as the section enters the viewport. Because querySelectorAll returns
+  // matches in document order regardless of which part of the selector
+  // list they came from, this naturally staggers left-to-right, top-to-
+  // bottom — no manual ordering needed.
+  const aboutRef = useScrollReveal({
+    targetSelector: '.about-left-image, .about-text, .about-right > *',
+    stagger: 0.12,
+    y: 30,
+  });
+
   return (
-    <section className='about container' id='about'>
+    <section className='about container' id='about' ref={aboutRef}>
 
         {/* Left column: main photo with a smaller caption card
             overlapping its bottom-right corner (positioned in About.scss) */}
         <div className='about-left'>
             <div className='about-left-image'>
                 <Image
-                    src='/images/meatpieimage.png'
+                    src='/images/meatpieImage.png'
                     fill
                     alt='meat-pie Image'
                 />

@@ -7,6 +7,7 @@ import './Gallery.scss'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6'
 import TornEdgeTop from '@/app/components/TornEdge/TornEdgeTop'
 import TornEdge from '@/app/components/TornEdge/TornEdge'
+import { useScrollReveal } from '@/app/hooks/useScrollReveal'
 
 // Photo gallery: a horizontally scrollable carousel. The card whose center
 // is closest to the middle of the visible track is shown larger/at full
@@ -15,6 +16,22 @@ import TornEdge from '@/app/components/TornEdge/TornEdge'
 // — arrow buttons scroll to the next/previous card using that same
 // mechanism, so behavior stays consistent either way.
 function Gallery() {
+    // Scroll-triggered entrance for the section intro (label + description)
+    // and the carousel, treated as three staggered blocks. Deliberately
+    // NOT animating the individual .gallery-card elements inside the
+    // carousel: they already have their own transform: scale(...) driven
+    // by CSS (see .gallery-card.active below) for the active/inactive
+    // carousel highlight, and GSAP writes directly to that same `transform`
+    // inline style. Animating each card here would overwrite that CSS-
+    // driven scale the moment this entrance animation finished, breaking
+    // the carousel's core visual effect. Animating the carousel container
+    // as a single block avoids that conflict entirely.
+    const galleryRef = useScrollReveal({
+        targetSelector: '.script, p, .gallery-carousel',
+        stagger: 0.12,
+        y: 30,
+    });
+
     // Track (scrollable) element and one ref per card, so we can scroll to
     // a specific card and measure each card's on-screen position.
     const trackRef = useRef(null)
@@ -108,7 +125,7 @@ function Gallery() {
     }, [])
 
     return (
-        <section className='gallery container' id='gallery'>
+        <section className='gallery container' id='gallery' ref={galleryRef}>
             <span className='script'>Gallery</span>
             <p>A little glimpse of our creation.</p>
 

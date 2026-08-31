@@ -278,6 +278,10 @@ export const galleryItems = [
     {
         name: 'Cake-parfait-2',
         className: 'ten'
+    },
+    {
+        name: 'meatpieImage',
+        className: 'eleven'
     }
 ];
 

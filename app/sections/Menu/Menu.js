@@ -1,3 +1,6 @@
+'use client';
+
+import { useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaArrowRightLong } from "react-icons/fa6";
@@ -5,6 +8,11 @@ import { menuItems,WHATSAPP_NUMBER } from '../../constants'
 import './Menu.scss'
 import TornEdgeTop from '@/app/components/TornEdge/TornEdgeTop';
 import TornEdge from '@/app/components/TornEdge/TornEdge';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 // WhatsApp business number the "Request a quote" links message.
 // Update to match the real number used elsewhere on the site.
@@ -15,8 +23,54 @@ import TornEdge from '@/app/components/TornEdge/TornEdge';
 // `menuItems` (and its shape: id/name/image/description/whatsappMessage)
 // lives in constants so content can be edited without touching this file.
 function Menu() {
+  const sectionRef = useRef(null);
+
+  // This section doesn't use the shared useScrollReveal hook (see
+  // app/hooks/useScrollReveal.js) — that hook fires one animation from a
+  // single trigger point, which works well for a compact block like About
+  // or Hero, but not for a long repeating list like this one. With 7 rows
+  // stacked across several screen heights, a single stagger fired the
+  // moment the section enters view would mean rows far below the fold are
+  // already fully faded in by the time you actually scroll down to them.
+  //
+  // ScrollTrigger.batch() is built for exactly this case: each row gets
+  // its own trigger and animates individually, right as that specific row
+  // enters the viewport, rather than all being scheduled from one point.
+  useGSAP(() => {
+    // Section intro (label + heading) — a small, non-repeating block, so
+    // this part does use a plain single-trigger stagger like other sections.
+    gsap.from(['.script.center', '.menu-heading'], {
+      opacity: 0,
+      y: 24,
+      duration: 0.7,
+      stagger: 0.12,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: 'top 85%',
+        toggleActions: 'play none none none',
+      },
+    });
+
+    // Each menu row fades + slides up individually as it enters the
+    // viewport, once, then stays.
+    ScrollTrigger.batch('.menu-item', {
+      start: 'top 85%',
+      once: true,
+      onEnter: (batch) => {
+        gsap.from(batch, {
+          opacity: 0,
+          y: 40,
+          duration: 0.7,
+          stagger: 0.15,
+          ease: 'power2.out',
+        });
+      },
+    });
+  }, { scope: sectionRef });
+
   return (
-    <section id='menu' className='menu-section'>
+    <section id='menu' className='menu-section' ref={sectionRef}>
       <div className='container'>
         <span className='script center'>Our Menu</span>
         <h2 className='menu-heading'>

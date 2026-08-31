@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Image from 'next/image'
 import { navLinks } from '../../constants'
 import './Navbar.scss'
@@ -8,6 +8,8 @@ import { FaWhatsapp } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import TornEdge from '../TornEdge/TornEdge';
 import { CiMenuKebab } from "react-icons/ci";
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
 // Height (px) of the fixed header — used to offset scroll position so a
 // section's top isn't hidden underneath it. Keep this in sync with the
@@ -26,6 +28,29 @@ function Navbar() {
 
   // Flips the menu open/closed. Called when the hamburger/close icon is clicked.
   const toggleMenu = () => setIsMenuOpen((prevState) => !prevState);
+
+  // Scopes the load-in animation below to just this <nav> element, so
+  // GSAP's selectors (e.g. 'img', '.nav-links li') only match things
+  // inside the navbar rather than anywhere on the page.
+  const navRef = useRef(null);
+
+  // Subtle entrance animation, played once when the page first loads.
+  // Unlike every other section (which animates in on scroll via
+  // useScrollReveal), the navbar is already visible the instant the page
+  // loads — there's nothing to "scroll into view" — so this just fades +
+  // drops each piece into place on mount, with a slight stagger so the
+  // logo, links, and CTA settle in one after another instead of all at
+  // once. useGSAP applies this before the browser's first paint, so there's
+  // no flash of the un-animated state.
+  useGSAP(() => {
+    gsap.from(['img', '.nav-links li', '.nav-cta-btn', '.hamburger-icon'], {
+      opacity: 0,
+      y: -12,
+      duration: 0.6,
+      stagger: 0.08,
+      ease: 'power2.out',
+    });
+  }, { scope: navRef });
 
   // Runs when a nav link is clicked: marks it active, closes the mobile
   // menu (if open), and scrolls to the target section manually.
@@ -58,7 +83,7 @@ function Navbar() {
 
   return (
     <header>
-      <nav className='container'>
+      <nav className='container' ref={navRef}>
         <Image
           src="/images/logo.png"
           width={60}
