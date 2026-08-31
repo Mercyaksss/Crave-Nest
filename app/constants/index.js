@@ -171,7 +171,7 @@ export const businessInfo = {
 
 
 export const contactInfo = {
-    phone: "+2349078006689",
+    phone: "+2349034082208",
 
     whatsapp: "+2349078006689",
 
