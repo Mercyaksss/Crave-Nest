@@ -1,7 +1,10 @@
+'use client';
+
 import React from 'react'
 import Link from 'next/link'
 import { FaInstagram, FaTiktok, FaWhatsapp, FaPhone, FaEnvelope, FaLocationDot, FaClock } from "react-icons/fa6"
 import { brand, navLinks, menuItems, contactInfo, socialLinks, businessInfo, businessHours } from '@/app/constants'
+import { useScrollReveal } from '@/app/hooks/useScrollReveal'
 import './Footer.scss'
 import Image from 'next/image'
 
@@ -11,8 +14,18 @@ const socialIcons = {
 }
 
 export default function Footer() {
+  // Each of the four footer-top columns (brand, quick links, menu links,
+  // contact) fades + slides up as its own block, followed by the
+  // copyright line — all in the same stagger sequence since they're
+  // matched in document order.
+  const footerRef = useScrollReveal({
+    targetSelector: '.footer-top > *, .footer-bottom',
+    stagger: 0.1,
+    y: 24,
+  });
+
   return (
-    <footer className='footer'>
+    <footer className='footer' ref={footerRef}>
         <div className='footer-top container'>
 
             <div className='footer-brand'>

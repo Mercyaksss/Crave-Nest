@@ -54,13 +54,24 @@ function Menu() {
 
     // Each menu row fades + slides up individually as it enters the
     // viewport, once, then stays.
+    //
+    // Rows are hidden immediately, up front, via gsap.set() — before
+    // ScrollTrigger.batch is even created. Without this, a row sits fully
+    // visible in its normal position until the moment it crosses the
+    // trigger line, at which point gsap.from() would suddenly snap it down
+    // into its hidden starting state before animating back up — a visible
+    // flash/jump. Pre-hiding here means there's nothing to snap to: the
+    // row is already hidden from the first frame, so onEnter just animates
+    // it forward (gsap.to) to its visible state.
+    gsap.set('.menu-item', { opacity: 0, y: 40 });
+
     ScrollTrigger.batch('.menu-item', {
       start: 'top 85%',
       once: true,
       onEnter: (batch) => {
-        gsap.from(batch, {
-          opacity: 0,
-          y: 40,
+        gsap.to(batch, {
+          opacity: 1,
+          y: 0,
           duration: 0.7,
           stagger: 0.15,
           ease: 'power2.out',
@@ -111,7 +122,7 @@ function Menu() {
                 <div className='menu-item-banner'>
                   <TornEdgeTop color='var(--color-secondary)'/>
 
-                  <h3>{item.name}</h3>
+                  <h3 className='script'>{item.name}</h3>
                   <p>{item.description}</p>
 
                   <Link

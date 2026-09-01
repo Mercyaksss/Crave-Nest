@@ -133,7 +133,7 @@ function Gallery() {
                 <div className='gallery-track' ref={trackRef}>
                     {galleryItems.map((item, index) => (
                         <div
-                            key={item.name}
+                            key={item}
                             ref={(el) => (cardRefs.current[index] = el)}
                             className={`gallery-card ${index === activeIndex ? 'active' : ''}`}
                         >
