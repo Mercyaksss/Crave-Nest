@@ -35,7 +35,7 @@ function About() {
         <div className='about-left'>
             <div className='about-left-image'>
                 <Image
-                    src='/images/meatpieimage.png'
+                    src='/images/meatpieImage.png'
                     fill
                     sizes="(max-width: 560px) 90vw, (max-width: 900px) 85vw, 33vw"
                     alt='meat-pie Image'

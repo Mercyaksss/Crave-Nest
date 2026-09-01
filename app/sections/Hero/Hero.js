@@ -25,19 +25,34 @@ function Hero() {
   // (slightly overlapping via the negative offsets below) instead of every
   // element animating in isolation.
   useGSAP(() => {
+    // Pre-hide every animated piece immediately, before the timeline is
+    // even built. In a GSAP timeline, only the very first tween (added at
+    // position 0) gets its hidden starting state applied on mount — every
+    // tween after that starts later in the sequence, so without this it
+    // would sit fully visible until the playhead reaches it, then visibly
+    // snap to hidden before animating back (the same "flash" issue fixed
+    // in Menu.js/FAQ.js). Setting everything hidden up front means the
+    // timeline below only ever animates forward, never snaps.
+    gsap.set('.tagline', { opacity: 0, y: 20 });
+    gsap.set('.heading', { opacity: 0, y: 24 });
+    gsap.set('.description', { opacity: 0, y: 20 });
+    gsap.set('.buttons', { opacity: 0, y: 16 });
+    gsap.set('.features li', { opacity: 0, y: 14 });
+    gsap.set('.imageWrapper', { opacity: 0, scale: 0.96 });
+
     const tl = gsap.timeline({
       defaults: { ease: 'power2.out', duration: 0.6 },
     });
 
-    tl.from('.tagline', { opacity: 0, y: 20 })
-      .from('.heading', { opacity: 0, y: 24 }, '-=0.4')
-      .from('.description', { opacity: 0, y: 20 }, '-=0.35')
-      .from('.buttons', { opacity: 0, y: 16 }, '-=0.3')
-      .from('.features li', { opacity: 0, y: 14, stagger: 0.08 }, '-=0.25')
+    tl.to('.tagline', { opacity: 1, y: 0 })
+      .to('.heading', { opacity: 1, y: 0 }, '-=0.4')
+      .to('.description', { opacity: 1, y: 0 }, '-=0.35')
+      .to('.buttons', { opacity: 1, y: 0 }, '-=0.3')
+      .to('.features li', { opacity: 1, y: 0, stagger: 0.08 }, '-=0.25')
       // Image fades/scales in slightly, overlapping with the text cascade
       // above rather than waiting for it to finish — keeps the whole
       // entrance feeling like one moment instead of two separate beats.
-      .from('.imageWrapper', { opacity: 0, scale: 0.96 }, '-=0.6');
+      .to('.imageWrapper', { opacity: 1, scale: 1 }, '-=0.6');
   }, { scope: heroRef });
 
   return (

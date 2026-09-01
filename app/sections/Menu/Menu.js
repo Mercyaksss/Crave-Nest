@@ -122,7 +122,7 @@ function Menu() {
                 <div className='menu-item-banner'>
                   <TornEdgeTop color='var(--color-secondary)'/>
 
-                  <h3 className='script'>{item.name}</h3>
+                  <h3>{item.name}</h3>
                   <p>{item.description}</p>
 
                   <Link
