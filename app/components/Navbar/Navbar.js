@@ -1,13 +1,13 @@
 'use client';
 import React, { useRef, useState } from 'react'
 import Image from 'next/image'
-import { navLinks } from '../../constants'
-import './Navbar.scss'
+import { navLinks, contactInfo } from '../../constants'
 import Button from '../Button/Button'
 import { FaWhatsapp } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import TornEdge from '../TornEdge/TornEdge';
 import { CiMenuKebab } from "react-icons/ci";
+import './Navbar.scss'
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
@@ -111,6 +111,7 @@ function Navbar() {
             title='Order on WhatsApp'
             icon={<FaWhatsapp color='#C9A24A' size={25} />}
             color='#C9A24A'
+            href={contactInfo.whatsappLink}
           />
         </div>
 
